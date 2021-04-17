@@ -1217,13 +1217,13 @@ Updates: disabled
                                                     <div class="box-large">
                                                         <input placeholder="Cópia de Recibo de vencimento*"
                                                             id="companyRecibo" type="text"
-                                                            name="Cópia de Recibo de vencimento" required>
-                                                        <button id="button2" type="button">Submeter</button>
+                                                            name="Cópia de Recibo de vencimento">
+                                                       <!--- <button id="button2" type="button">Submeter</button>-->
                                                     </div>
 
                                                     <div class="box-large">
                                                         <input placeholder="CAE*" id="CAE" type="text" name="CAE">
-                                                        <button id="button2" type="button">Submeter</button>
+                                                        <!--<button id="button2" type="button">Submeter</button>-->
                                                     </div>
 
 
@@ -1239,7 +1239,7 @@ Updates: disabled
 
                                                     <div class="box-simple">
                                                         <input placeholder="Código postal*:" id="zip" type="text"
-                                                            name="zip">
+                                                            name="zip" required>
                                                     </div>
 
 
@@ -2019,6 +2019,7 @@ Updates: disabled
 
         const egg02 = document.getElementById("egg02");
 
+        
         egg02.addEventListener('submit', (event) => {
             document.getElementById("registar").disabled = true;
             event.preventDefault();
@@ -2045,6 +2046,7 @@ Updates: disabled
                         pass: pass.value,
                     }*/
                     return fetch(`${urlBase}/register`, {
+                        alert("CHeguei aqui!!!")
                         headers: {
                             'Content-Type': 'application/json'
                         },
