@@ -1279,8 +1279,8 @@ Updates: disabled
                                                             obrigatório</span>
                                                     </div>
 
-
-                                                    <button type="submit" id="button">Resgistar</button>
+                                                    
+                                                    <button type="submit" id="registar" class="">Resgistar</button>
 
 
 
@@ -1924,6 +1924,8 @@ Updates: disabled
     <!-- ///////////////// END OF SURVICATE ////////////////////-->
 
     <script>
+
+        alert("chega aqui")
         const urlBase = `<%=urlBase%>`;
 
         const company = document.getElementById('company');
@@ -1936,7 +1938,7 @@ Updates: disabled
             const letras = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
             if (company.value.match(letras)) {
                 company.setCustomValidity("");
-                document.getElementById("button").disabled = false;
+                document.getElementById("registar").disabled = false;
             } else {
                 company.setCustomValidity("Insira apenas letras!");
             }
@@ -1973,7 +1975,7 @@ Updates: disabled
                     })
                 } else {
                     pass.setCustomValidity("");
-                    document.getElementById("button").disabled = false;
+                    document.getElementById("registar").disabled = false;
                 }
             } else {
                 swal({
@@ -1994,7 +1996,7 @@ Updates: disabled
                     intlphone.setCustomValidity("Insira no máximo 9 caracteres!");
                 } else {
                     intlphone.setCustomValidity("");
-                    document.getElementById("button").disabled = false;
+                    document.getElementById("registar").disabled = false;
                 }
             } else {
                 intlphone.setCustomValidity("Insira apenas números!");
@@ -2008,7 +2010,7 @@ Updates: disabled
                     zip.setCustomValidity("Insira no máximo 7 caracteres!");
                 } else {
                     zip.setCustomValidity("");
-                    document.getElementById("button").disabled = false;
+                    document.getElementById("registar").disabled = false;
                 }
             } else {
                 zip.setCustomValidity("Insira apenas números!");
@@ -2018,7 +2020,7 @@ Updates: disabled
         const egg02 = document.getElementById("egg02");
 
         egg02.addEventListener('submit', (event) => {
-            document.getElementById("button").disabled = true;
+            document.getElementById("registar").disabled = true;
             event.preventDefault();
 
             return fetch(
@@ -2074,7 +2076,7 @@ Updates: disabled
                             }
                         }
                     }).catch(error => {
-                        document.getElementById("button").disabled = false;
+                        document.getElementById("registar").disabled = false;
                         if (error.message == 'CONTACT_EXISTS') {
                             swal({
                                 title: 'Este email já existe!',
