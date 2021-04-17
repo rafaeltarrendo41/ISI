@@ -1199,30 +1199,25 @@ Updates: disabled
 
 
                                                     <div class="box-large">
-                                                        <input placeholder="Palavra-Passe*:" id="pass" type="text"
-                                                            name="company"
-                                                            required>
+                                                        <input placeholder="Palavra-Passe*:" id="pass" type="password"
+                                                            name="company" required>
                                                     </div>
 
                                                     <div class="box-large2">
                                                         <input placeholder="Email*:" id="email" type="text" name="email"
-                                                            
                                                             required>
                                                     </div>
 
                                                     <div class="box-large">
                                                         <input placeholder="NIF" id="nif" type="text" name="NIF"
-                                                            
                                                             required>
-                                                        <button id="button2" type="button">Validar</button>
                                                     </div>
 
 
                                                     <div class="box-large">
-                                                        <input placeholder="Cópia de Recibo de vencimento*" id="companyRecibo"
-                                                            type="text" name="Cópia de Recibo de vencimento"
-                                                            
-                                                            required>
+                                                        <input placeholder="Cópia de Recibo de vencimento*"
+                                                            id="companyRecibo" type="text"
+                                                            name="Cópia de Recibo de vencimento" required>
                                                         <button id="button2" type="button">Submeter</button>
                                                     </div>
 
@@ -1272,7 +1267,7 @@ Updates: disabled
                                                     <div
                                                         style="display: flex; justify-content: center; align-items: center; padding: 10px 0 10px 0;">
                                                         <div class="g-recaptcha"
-                                                            data-sitekey="6LdBB9sUAAAAAPHYRxSDwogQpOqjjo5o2c6ohKUo"
+                                                            data-sitekey="6LdoHK4aAAAAAE11xgO3lmuf_sNoW-NhPo9Qtt5m"
                                                             data-callback="enableBtn"></div>
                                                     </div>
 
@@ -1285,7 +1280,7 @@ Updates: disabled
                                                     </div>
 
 
-                                                   <button type="submit" id="button">Resgistar</button>
+                                                    <button type="submit" id="button">Resgistar</button>
 
 
 
@@ -1529,7 +1524,8 @@ Updates: disabled
 
                                                 </script>
 
-                                                <script src="https://www.google.com/recaptcha/api.js"></script>
+                                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
                                                 <script>
                                                     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") { var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value); elems["ts"] = JSON.stringify(new Date().getTime()); document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
 
@@ -1967,27 +1963,27 @@ Updates: disabled
                     }
                 }
                 if (validator.maiuscula + validator.minuscula + validator.especial + validator.numero < 3) {
-                        swal({
-                            html: '<strong><h3>A sua palavra-passe deve conter pelo menos três dos seguintes caracteres: um caracter especial, uma letra maiúscula, uma letra minúscula ou um número!</h3></strong>',
-                            type: 'error',
-                            showCloseButton: true,
-                            showConfirmButton: false,
-                            focusConfirm: false,
-                            timer: 9000
-                        })
-                    } else {
-                        pass.setCustomValidity("");
-                        document.getElementById("button").disabled = false;
-                    }
-            } else {
-                swal({
-                        html: '<strong><h3>A sua palavra-passe deve conter no mínimo 9 caracteres.</h3></strong>',
+                    swal({
+                        html: '<strong><h3>A sua palavra-passe deve conter pelo menos três dos seguintes caracteres: um caracter especial, uma letra maiúscula, uma letra minúscula ou um número!</h3></strong>',
                         type: 'error',
                         showCloseButton: true,
                         showConfirmButton: false,
                         focusConfirm: false,
                         timer: 9000
                     })
+                } else {
+                    pass.setCustomValidity("");
+                    document.getElementById("button").disabled = false;
+                }
+            } else {
+                swal({
+                    html: '<strong><h3>A sua palavra-passe deve conter no mínimo 9 caracteres.</h3></strong>',
+                    type: 'error',
+                    showCloseButton: true,
+                    showConfirmButton: false,
+                    focusConfirm: false,
+                    timer: 9000
+                })
             }
         })
 
@@ -2030,7 +2026,7 @@ Updates: disabled
                 console.log(`http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`)
             ).then(response => {
                 console.log(response)
-                if(response.status == 200){
+                if (response.status == 200) {
                     return response.json();
                 } else {
                     throw new Error(
@@ -2038,7 +2034,7 @@ Updates: disabled
                     );
                 }
             }).then(result => {
-                if(result.nif_validation){
+                if (result.nif_validation) {
                     let data = {
                         name: document.getElementById("company").value,
                         email: document.getElementById("email").value,
@@ -2049,13 +2045,13 @@ Updates: disabled
                     return fetch(`${urlBase}/register`, {
                         headers: {
                             'Content-Type': 'application/json'
-                        }, 
+                        },
                         method: 'POST',
                         body: JSON.stringify(data)
                     }).then(response => {
                         return response.json();
                     }).then(result => {
-                        if(result.message == "User inserted with success"){
+                        if (result.message == "User inserted with success") {
                             swal({
                                 title: 'Registo efetuado com sucesso!',
                                 type: 'success',
@@ -2067,9 +2063,9 @@ Updates: disabled
                                 window.location.replace('/')
                             })
                         } else {
-                            if(result.error == "CONTACT_EXISTS"){
+                            if (result.error == "CONTACT_EXISTS") {
                                 throw new Error(result.error);
-                            } else if(result.error == "NIF_EXISTS"){
+                            } else if (result.error == "NIF_EXISTS") {
                                 throw new Error(result.error);
                             } else {
                                 throw new Error(
@@ -2079,7 +2075,7 @@ Updates: disabled
                         }
                     }).catch(error => {
                         document.getElementById("button").disabled = false;
-                        if(error.message == 'CONTACT_EXISTS'){
+                        if (error.message == 'CONTACT_EXISTS') {
                             swal({
                                 title: 'Este email já existe!',
                                 showCancelButton: false,
@@ -2087,7 +2083,7 @@ Updates: disabled
                                 type: 'error',
                                 timer: 2000
                             })
-                        } else if(error.message == 'NIF_EXISTS'){
+                        } else if (error.message == 'NIF_EXISTS') {
                             swal({
                                 title: 'Este NIF já existe!',
                                 showCancelButton: false,
