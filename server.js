@@ -14,7 +14,7 @@ app.use(bodyParser.json({
 }));
 
 app.use(sanitizer());
-app.use(validator());
+//app.use(validator());
 
 const dirName = __dirname;
 app.use(express.static(dirName));
