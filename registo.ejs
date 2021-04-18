@@ -1881,6 +1881,13 @@ Updates: disabled
                          zip: document.getElementById("zip").value,
                          pass: pass.value,
                      }*/
+                     let data = {
+                         name: document.getElementById("company").value,
+                         email: document.getElementById("email").value,
+                         phone: document.getElementById("intphone").value,
+                         zip: document.getElementById("zip").value,
+                         pass: pass.value,
+                     }
             alert("CHeguei aqui!!!")
             return fetch(`${urlBase}/register`, {
                         headers: {
