@@ -1191,7 +1191,7 @@ Updates: disabled
                                                         <input placeholder="Cópia de Recibo de vencimento*"
                                                             id="companyRecibo" type="text"
                                                             name="Cópia de Recibo de vencimento">
-                                                       <!--- <button id="button2" type="button">Submeter</button>-->
+                                                        <!--- <button id="button2" type="button">Submeter</button>-->
                                                     </div>
 
                                                     <div class="box-large">
@@ -1252,7 +1252,7 @@ Updates: disabled
                                                             obrigatório</span>
                                                     </div>
 
-                                                    
+
                                                     <button type="submit" id="registar">Registar</button>
 
 
@@ -1285,12 +1285,7 @@ Updates: disabled
                                                                 </noscript>
                                                             </tr>
 
-                                                            <tr>
-                                                                <td style="display: none;"><input id="req_id"
-                                                                        type="hidden" name="req_id"
-                                                                        value="first_name;last_name;company;00ND0000005eLzU;email;phone;acceptance;" />
-                                                                </td>
-                                                            </tr>
+
 
 
 
@@ -1497,7 +1492,8 @@ Updates: disabled
 
                                                 </script>
 
-                                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                                <script src="https://www.google.com/recaptcha/api.js" async
+                                                    defer></script>
 
                                                 <script>
                                                     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") { var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value); elems["ts"] = JSON.stringify(new Date().getTime()); document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
@@ -1762,19 +1758,19 @@ Updates: disabled
 
 
 
-  
-  
-   
- 
 
-  
-  
+
+
+
+
+
+
     <div id="fb-root"></div>
 
 
     <script>
 
-        
+
         const urlBase = `<%=urlBase%>`;
 
         const company = document.getElementById('company');
@@ -1868,109 +1864,109 @@ Updates: disabled
 
         const egg02 = document.getElementById("egg02");
 
-        
+
         egg02.addEventListener('submit', (event) => {
             console.log("merda")
             alert("merda123")
             document.getElementById("registar").disabled = true;
             event.preventDefault();
 
-           /* return fetch(
-                `http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`,
-                console.log(`http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`)
-            ).then(response => {
-                console.log(response)
-                if (response.status == 200) {
-                    return response.json();
-                } else {
-                    throw new Error(
-                        "Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!"
-                    );
-                }
-            }).then(result => {
-                if (result.nif_validation) {
-                    let data = {
-                        name: document.getElementById("company").value,
-                        email: document.getElementById("email").value,
-                        phone: document.getElementById("intphone").value,
-                        zip: document.getElementById("zip").value,
-                        pass: pass.value,
-                    }*/
-                    return fetch(`${urlBase}/register`, {
-                        alert("CHeguei aqui!!!")
+            /* return fetch(
+                 `http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`,
+                 console.log(`http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`)
+             ).then(response => {
+                 console.log(response)
+                 if (response.status == 200) {
+                     return response.json();
+                 } else {
+                     throw new Error(
+                         "Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!"
+                     );
+                 }
+             }).then(result => {
+                 if (result.nif_validation) {
+                     let data = {
+                         name: document.getElementById("company").value,
+                         email: document.getElementById("email").value,
+                         phone: document.getElementById("intphone").value,
+                         zip: document.getElementById("zip").value,
+                         pass: pass.value,
+                     }*/
+            return fetch(`${urlBase}/register`, {
+                alert("CHeguei aqui!!!")
                         headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        method: 'POST',
-                        body: JSON.stringify(data)
-                    }).then(response => {
-                        return response.json();
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+            }).then(response => {
+                return response.json();
+            }).then(result => {
+                if (result.message == "User inserted with success") {
+                    swal({
+                        title: 'Registo efetuado com sucesso!',
+                        type: 'success',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        showLoaderOnConfirm: false,
+                        timer: 2000
                     }).then(result => {
-                        if (result.message == "User inserted with success") {
-                            swal({
-                                title: 'Registo efetuado com sucesso!',
-                                type: 'success',
-                                showCancelButton: false,
-                                showConfirmButton: false,
-                                showLoaderOnConfirm: false,
-                                timer: 2000
-                            }).then(result => {
-                                window.location.replace('/')
-                            })
-                        } else {
-                            if (result.error == "CONTACT_EXISTS") {
-                                throw new Error(result.error);
-                            } else if (result.error == "NIF_EXISTS") {
-                                throw new Error(result.error);
-                            } else {
-                                throw new Error(
-                                    "Occorreu um erro! Por Favor tente mais tarde!"
-                                );
-                            }
-                        }
-                    }).catch(error => {
-                        document.getElementById("registar").disabled = false;
-                        if (error.message == 'CONTACT_EXISTS') {
-                            swal({
-                                title: 'Este email já existe!',
-                                showCancelButton: false,
-                                showConfirmButton: false,
-                                type: 'error',
-                                timer: 2000
-                            })
-                        } else if (error.message == 'NIF_EXISTS') {
-                            swal({
-                                title: 'Este NIF já existe!',
-                                showCancelButton: false,
-                                showConfirmButton: false,
-                                type: 'error',
-                                timer: 2000
-                            })
-                        } else {
-                            swal({
-                                html: '<strong><h3>Ocorreu um erro! Por favor tente mais tarde!</h3></strong>',
-                                showCancelButton: false,
-                                showConfirmButton: false,
-                                type: 'error',
-                                timer: 2000
-                            })
-                        }
-                    });
-                /*} else {
-                    throw new Error(
-                        'O NIF que introduziu não é valido, verifique se este está correto!'
-                    );
+                        window.location.replace('/')
+                    })
+                } else {
+                    if (result.error == "CONTACT_EXISTS") {
+                        throw new Error(result.error);
+                    } else if (result.error == "NIF_EXISTS") {
+                        throw new Error(result.error);
+                    } else {
+                        throw new Error(
+                            "Occorreu um erro! Por Favor tente mais tarde!"
+                        );
+                    }
                 }
             }).catch(error => {
-                swal({
-                    html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
-                    type: 'error',
-                    showCloseButton: false,
-                    showConfirmButton: false,
-                    focusConfirm: false,
-                    timer: 2000
-                })
-            })*/
+                document.getElementById("registar").disabled = false;
+                if (error.message == 'CONTACT_EXISTS') {
+                    swal({
+                        title: 'Este email já existe!',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        type: 'error',
+                        timer: 2000
+                    })
+                } else if (error.message == 'NIF_EXISTS') {
+                    swal({
+                        title: 'Este NIF já existe!',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        type: 'error',
+                        timer: 2000
+                    })
+                } else {
+                    swal({
+                        html: '<strong><h3>Ocorreu um erro! Por favor tente mais tarde!</h3></strong>',
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        type: 'error',
+                        timer: 2000
+                    })
+                }
+            });
+            /*} else {
+                throw new Error(
+                    'O NIF que introduziu não é valido, verifique se este está correto!'
+                );
+            }
+        }).catch(error => {
+            swal({
+                html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
+                type: 'error',
+                showCloseButton: false,
+                showConfirmButton: false,
+                focusConfirm: false,
+                timer: 2000
+            })
+        })*/
         })
 
     </script>
