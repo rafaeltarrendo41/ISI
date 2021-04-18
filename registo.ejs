@@ -1757,10 +1757,9 @@ Updates: disabled
 
     <div id="fb-root"></div>
 
-
+    
     <script>
-
-
+        console.log("Entrei!!!")
         const urlBase = `<%=urlBase%>`;
 
         const company = document.getElementById('company');
@@ -1769,6 +1768,7 @@ Updates: disabled
         const intlphone = document.getElementById('intlphone');
         const zip = document.getElementById('zip');
         console.log(company);
+
         company.addEventListener("change", (event) => {
             const letras = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
             if (company.value.match(letras)) {
