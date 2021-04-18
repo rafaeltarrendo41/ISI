@@ -1862,12 +1862,13 @@ Updates: disabled
 
              return fetch(
                  `http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`,
-                 console.log(`http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`)
+                 alert(`http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`)
              ).then(response => {
-                 console.log(response)
+                 alert(response);
                  if (response.status == 200) {
                      return response.json();
                  } else {
+                    alert("merda123");
                      throw new Error(
                          "Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!"
                      );
@@ -1881,7 +1882,6 @@ Updates: disabled
                          zip: document.getElementById("zip").value,
                          pass: pass.value,
                      }
-            alert("merda123");
             alert("CHeguei aqui!!!")
             return fetch(`https://wtransnet.herokuapp.com/register`, {
                 headers: {
