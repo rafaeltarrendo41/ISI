@@ -1882,15 +1882,17 @@ Updates: disabled
                          pass: pass.value,
                      }*/
             alert("CHeguei aqui!!!")
-            return fetch(`http://wtrasnet.herokuapp.com/register`, {
+            return fetch(`${urlBase}/register`, {
                         headers: {
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
                 body: JSON.stringify(data)
             }).then(response => {
+                alert("CONA AREIAS");
                 return response.json();
             }).then(result => {
+                alert("MAE CONA");
                 if (result.message == "User inserted with success") {
                     swal({
                         title: 'Registo efetuado com sucesso!',
