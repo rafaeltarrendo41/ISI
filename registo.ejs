@@ -1883,7 +1883,7 @@ Updates: disabled
                         pass: pass.value,
                     }
                     alert(data)
-                    return fetch(`https://wtransnet.herokuapp.com/register`, {
+                    return fetch(`${urlBase}/register`, {
                         headers: {
                             'Content-Type': 'application/json'
                         },
