@@ -1759,7 +1759,7 @@ Updates: disabled
 
     
     <script>
-        alert("Entrei!!!");
+        const registar = document.getElementById('registar');
         const urlBase = `<%=urlBase%>`;
 
         const company = document.getElementById('company');
@@ -1856,8 +1856,7 @@ Updates: disabled
 
 
         registar.addEventListener('onclick', (event) => {
-            console.log("merda")
-            alert("merda123")
+            alert("merda123");
             document.getElementById("registar").disabled = true;
             event.preventDefault();
 
