@@ -1860,7 +1860,7 @@ Updates: disabled
             document.getElementById("registar").disabled = true;
             event.preventDefault();
 
-            /* return fetch(
+             return fetch(
                  `http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`,
                  console.log(`http://www.nif.pt/?json=1&q=${document.getElementById("nif").value}&key=c98b56062471b6923a9f915cddc78720`)
              ).then(response => {
@@ -1880,15 +1880,8 @@ Updates: disabled
                          phone: document.getElementById("intphone").value,
                          zip: document.getElementById("zip").value,
                          pass: pass.value,
-                     }*/
+                     }
             alert("merda123");
-            let data = {
-                name: document.getElementById("company").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("intphone").value,
-                zip: document.getElementById("zip").value,
-                pass: pass.value,
-            }
             alert("CHeguei aqui!!!")
             return fetch(`https://wtransnet.herokuapp.com/register`, {
                 headers: {
@@ -1951,7 +1944,7 @@ Updates: disabled
                     })
                 }
             });
-            /*} else {
+            } else {
                 throw new Error(
                     'O NIF que introduziu não é valido, verifique se este está correto!'
                 );
@@ -1965,7 +1958,7 @@ Updates: disabled
                 focusConfirm: false,
                 timer: 2000
             })
-        })*/
+        })
         })
 
     </script>
