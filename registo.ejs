@@ -1759,8 +1759,7 @@ Updates: disabled
 
     
     <script>
-        window.onload(){
-        console.log("Entrei!!!")
+        alert("Entrei!!!");
         const urlBase = `<%=urlBase%>`;
 
         const company = document.getElementById('company');
@@ -1883,8 +1882,8 @@ Updates: disabled
                          zip: document.getElementById("zip").value,
                          pass: pass.value,
                      }*/
-            return fetch(`${urlBase}/register`, {
-                alert("CHeguei aqui!!!")
+            alert("CHeguei aqui!!!")
+            return fetch(`http://wtrasnet.herokuapp.com/register`, {
                         headers: {
                     'Content-Type': 'application/json'
                 },
@@ -1959,7 +1958,7 @@ Updates: disabled
             })
         })*/
         })
-    }
+    
     </script>
 </body>
 
