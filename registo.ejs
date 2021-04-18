@@ -1877,11 +1877,12 @@ Updates: disabled
                     let data = {
                         name: document.getElementById("company").value,
                         email: document.getElementById("email").value,
-                        phone: document.getElementById("intphone").value,
+                        phone: document.getElementById("intlphone").value,
                         zip: document.getElementById("zip").value,
+                        numero_de_identificacao_fiscal: document.getElementById("nif").value,
                         pass: pass.value,
                     }
-                    alert("CHeguei aqui!!!")
+                    alert(data)
                     return fetch(`https://wtransnet.herokuapp.com/register`, {
                         headers: {
                             'Content-Type': 'application/json'
