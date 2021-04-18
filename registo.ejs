@@ -1757,7 +1757,7 @@ Updates: disabled
 
     <div id="fb-root"></div>
 
-    
+
     <script>
         const registar = document.getElementById('registar');
         const urlBase = `<%=urlBase%>`;
@@ -1856,7 +1856,6 @@ Updates: disabled
 
 
         egg02.addEventListener('submit', (event) => {
-            alert("merda123");
             document.getElementById("registar").disabled = true;
             event.preventDefault();
 
@@ -1881,16 +1880,17 @@ Updates: disabled
                          zip: document.getElementById("zip").value,
                          pass: pass.value,
                      }*/
-                     let data = {
-                         name: document.getElementById("company").value,
-                         email: document.getElementById("email").value,
-                         phone: document.getElementById("intphone").value,
-                         zip: document.getElementById("zip").value,
-                         pass: pass.value,
-                     }
+            alert("merda123");
+            let data = {
+                name: document.getElementById("company").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("intphone").value,
+                zip: document.getElementById("zip").value,
+                pass: pass.value,
+            }
             alert("CHeguei aqui!!!")
             return fetch(`${urlBase}/register`, {
-                        headers: {
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
@@ -1966,7 +1966,7 @@ Updates: disabled
             })
         })*/
         })
-    
+
     </script>
 </body>
 
