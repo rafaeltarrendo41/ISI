@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
   <link href='https://fonts.googleapis.com/css?family=Montserrat|Staatliches&display=swap' rel='stylesheet' />
   <link href="./node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet"/>
@@ -239,7 +239,7 @@
         <div>
 
 
-          <button onclick="sweet" type="submit" id="registar" class="btn1"> REGISTAR </button>
+          <button onclick="sweet()" type="button" id="registar" class="btn1"> REGISTAR </button>
         </div>
       </div>
     </div>
@@ -270,7 +270,7 @@
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
   function sweet(){
-    Swal('Hello world!')
+    Swal.fire('Hello world!')
   }
   
   /*
@@ -464,3 +464,4 @@
 
 
 </body>
+</html>

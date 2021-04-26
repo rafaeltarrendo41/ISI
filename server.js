@@ -22,8 +22,8 @@ app.use(express.static(dirName));
 const urlBase = `https://wtransnet-face.herokuapp.com`;
 const version = 1.0;
 
-app.set('view engine', 'ejs');
-app.set('views', '')
+//app.set('view engine', 'ejs');
+//app.set('views', '')
 
 app.use((req, res, next) => {
     if(req.header('x-forwarded-proto') !== 'https'){
