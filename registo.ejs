@@ -229,8 +229,8 @@
         <input type="text" id="nome" name="fname" placeholder="Nome da Empresa"> <br>
         <input type="text" id="pass" name="lname" placeholder="Palavra-Pass"> <br>
         <input type="text" id="email" name="lname" placeholder="Email"> <br>
-        <input type="text" id="nif" name="lname" placeholder="Nif"> <br>
-        <input type="text" id="telefone" name="lname" placeholder="Telefone"> <br>
+        <input type="number" id="nif" name="lname" placeholder="Nif"> <br>
+        <input type="number" id="telefone" name="lname" placeholder="Telefone"> <br>
         <div class=cae>
           <label>Documento CAE:</label>
           <input type="file" id="lname" name="lname" placeholder="CAE">
@@ -335,16 +335,12 @@
 
 
     intlphone.addEventListener("change", (event) => {
-      if (intlphone.value.match(numeros)) {
         if (intlphone.value.length > 9) {
           intlphone.setCustomValidity("Insira no máximo 9 caracteres!");
         } else {
           intlphone.setCustomValidity("");
           document.getElementById("registar").disabled = false;
         }
-      } else {
-        intlphone.setCustomValidity("Insira apenas números!");
-      }
     })
 
     
