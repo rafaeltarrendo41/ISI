@@ -239,7 +239,7 @@
         <div>
 
 
-          <button type="submit" id="registar" class="btn1"> REGISTAR </button>
+          <button onclick="sweet" type="submit" id="registar" class="btn1"> REGISTAR </button>
         </div>
       </div>
     </div>
@@ -269,6 +269,11 @@
  
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
+  function sweet(){
+    Swal('Hello world!')
+  }
+  
+  /*
     const registar = document.getElementById('registar');
     const urlBase = `<%=urlBase%>`;
     Swal('Bem vindo')
@@ -454,7 +459,7 @@
         })
       })
     })
-
+*/
   </script>
 
 
