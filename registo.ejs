@@ -270,11 +270,14 @@
 
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
+    const urlBase = `<%urlBase%>`;
     window.onload = () => {
       const addUtilizador = document.getElementById('form');
       //const urlBase = `<%=urlBase%>`;
       addUtilizador.addEventListener("submit", async (event) => {
-        Swal.fire('Bem vindo')
+        document.getElementById("registar").disabled = true;
+        event.preventDefault();
+        // Swal.fire('Bem vindo')
 
         const company = document.getElementById('nome');
         const pass = document.getElementById('pass');
@@ -290,17 +293,97 @@
         }
         console.log(properties);
 
-        response = await fetch(`https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`).then(response => {
-          if(response.status == 200){
+        return fetch(
+          `https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
+        ).then(response => {
+          if (response.status == 200) {
             return response.json();
-            console.log(response);
-            Swal.fire('Deu')
+            //console.log(response);
           } else {
             Swal.fire("Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!");
           }
         }).then(result => {
-          //Swal.fire(result)
-          console.log(result);
+          if (result.nif_validation) {
+            let properties = {
+              "properties": {
+                company: company.value,
+                pass: pass.value,
+                email: email.value,
+                numero_de_identificacao_fiscal: nif.value,
+                phone: intlphone.value
+              }
+            }
+
+            return fetch(`${urlBase}/register`, {
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              method: 'POST',
+              body: JSON.stringify(properties)
+            }).then(response => {
+              return response.json();
+            }).then(result => {
+              console.log(result);
+              if (result.message == "User inserted with success") {
+                Swal.fire({
+                  title: 'Registo efetuado com sucesso!',
+                  timer: 2000
+                }).then(result => {
+                  window.location.replace('/register')
+                })
+              } else {
+                if (result.error == "CONTACT_EXISTS") {
+                  throw new Error(result.error);
+                } else if (result.error == "NIF_EXISTS") {
+                  throw new Error(result.error);
+                } else {
+                  throw new Error(
+                    "Ocorreu um erro! Tente novamente mais tarde. Obrigado!"
+                  );
+                }
+              }
+            }).catch(error => {
+              document.getElementById("registar").disabled = false;
+              if (error.message == 'CONTACT_EXISTS') {
+                Swal.fire({
+                  title: 'Este email já existe!',
+                  showCancelButton: false,
+                  showConfirmButton: false,
+                  type: 'error',
+                  timer: 2000
+                })
+              } else if (error.message == 'NIF_EXISTS') {
+                Swal.fire({
+                  title: 'Este NIF já existe!',
+                  showCancelButton: false,
+                  showConfirmButton: false,
+                  type: 'error',
+                  timer: 2000
+                })
+              } else {
+                Swal.fire({
+                  html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
+                  showCancelButton: false,
+                  showConfirmButton: false,
+                  type: 'error',
+                  timer: 2000
+                })
+              }
+            });
+          } else {
+            throw new Error(
+              "O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!"
+            );
+          }
+        }).catch(error => {
+          Swal.fire({
+            html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
+            type: 'error',
+            showCloseButton: false,
+            showConfirmButton: false,
+            focusConfirm: false,
+            timer: 2000
+          })
         })
 
       })
@@ -381,110 +464,110 @@
 
 
 
-     /* document.getElementById("registar").disabled = true;
-      event.preventDefault();
-
-      return fetch(
-        `https://cors-anywhere.herokuapp.com/http://www.nif.pt/?json=1&q=${nif}&key=c98b56062471b6923a9f915cddc78720`
-      ).then(response => {
-        //alert(response);
-        if (response.status == 200) {
-          return response.json();
-        } else {
-          throw new Error(
-            "Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!"
-          );
-        }
-      }).then(result => {
-        alert(result.nif_validation);
-        if (result.nif_validation) {
-          let data = {
-            name: document.getElementById("company").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("intlphone").value,
-            // pass: document.getElementById("pass").value,
-            numero_de_identificacao_fiscal: document.getElementById("nif").value,
-            pass: pass.value,
-          }
-          console.log(data);
-          return fetch(`${urlBase}/register`, {
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(data)
-          }).then(response => {
-            alert(response);
-            return response.json();
-          }).then(result => {
-            alert(result);
-            if (result.message == "User inserted with success") {
-              Swal.fire({
-                title: 'Registo efetuado com sucesso!',
-                type: 'success',
-                showCancelButton: false,
-                showConfirmButton: false,
-                showLoaderOnConfirm: false,
-                timer: 2000
-              }).then(result => {
-                window.location.replace('/')
-              })
-            } else {
-              if (result.error == "CONTACT_EXISTS") {
-                throw new Error(result.error);
-              } else if (result.error == "NIF_EXISTS") {
-                throw new Error(result.error);
-              } else {
-                throw new Error(
-                  "Occorreu um erro! Por Favor tente mais tarde!"
-                );
-              }
-            }
-          }).catch(error => {
-            document.getElementById("registar").disabled = false;
-            if (error.message == 'CONTACT_EXISTS') {
-              swal({
-                title: 'Este email já existe!',
-                showCancelButton: false,
-                showConfirmButton: false,
-                type: 'error',
-                timer: 2000
-              })
-            } else if (error.message == 'NIF_EXISTS') {
-              swal({
-                title: 'Este NIF já existe!',
-                showCancelButton: false,
-                showConfirmButton: false,
-                type: 'error',
-                timer: 2000
-              })
-            } else {
-              Swal.fire({
-                html: '<strong><h3>Ocorreu um erro! Por favor tente mais tarde!</h3></strong>',
-                showCancelButton: false,
-                showConfirmButton: false,
-                type: 'error',
-                timer: 2000
-              })
-            }
-          });
-        } else {
-          throw new Error(
-            'O NIF que introduziu não é valido, verifique se este está correto!'
-          );
-        }
-      }).catch(error => {
-        Swal.fire({
-          html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
-          type: 'error',
-          showCloseButton: false,
-          showConfirmButton: false,
-          focusConfirm: false,
-          timer: 2000
-        })
-      })
-    }*/
-  }
+      /* document.getElementById("registar").disabled = true;
+       event.preventDefault();
+ 
+       return fetch(
+         `https://cors-anywhere.herokuapp.com/http://www.nif.pt/?json=1&q=${nif}&key=c98b56062471b6923a9f915cddc78720`
+       ).then(response => {
+         //alert(response);
+         if (response.status == 200) {
+           return response.json();
+         } else {
+           throw new Error(
+             "Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!"
+           );
+         }
+       }).then(result => {
+         alert(result.nif_validation);
+         if (result.nif_validation) {
+           let data = {
+             name: document.getElementById("company").value,
+             email: document.getElementById("email").value,
+             phone: document.getElementById("intlphone").value,
+             // pass: document.getElementById("pass").value,
+             numero_de_identificacao_fiscal: document.getElementById("nif").value,
+             pass: pass.value,
+           }
+           console.log(data);
+           return fetch(`${urlBase}/register`, {
+             headers: {
+               'Content-Type': 'application/json'
+             },
+             method: 'POST',
+             body: JSON.stringify(data)
+           }).then(response => {
+             alert(response);
+             return response.json();
+           }).then(result => {
+             alert(result);
+             if (result.message == "User inserted with success") {
+               Swal.fire({
+                 title: 'Registo efetuado com sucesso!',
+                 type: 'success',
+                 showCancelButton: false,
+                 showConfirmButton: false,
+                 showLoaderOnConfirm: false,
+                 timer: 2000
+               }).then(result => {
+                 window.location.replace('/')
+               })
+             } else {
+               if (result.error == "CONTACT_EXISTS") {
+                 throw new Error(result.error);
+               } else if (result.error == "NIF_EXISTS") {
+                 throw new Error(result.error);
+               } else {
+                 throw new Error(
+                   "Occorreu um erro! Por Favor tente mais tarde!"
+                 );
+               }
+             }
+           }).catch(error => {
+             document.getElementById("registar").disabled = false;
+             if (error.message == 'CONTACT_EXISTS') {
+               swal({
+                 title: 'Este email já existe!',
+                 showCancelButton: false,
+                 showConfirmButton: false,
+                 type: 'error',
+                 timer: 2000
+               })
+             } else if (error.message == 'NIF_EXISTS') {
+               swal({
+                 title: 'Este NIF já existe!',
+                 showCancelButton: false,
+                 showConfirmButton: false,
+                 type: 'error',
+                 timer: 2000
+               })
+             } else {
+               Swal.fire({
+                 html: '<strong><h3>Ocorreu um erro! Por favor tente mais tarde!</h3></strong>',
+                 showCancelButton: false,
+                 showConfirmButton: false,
+                 type: 'error',
+                 timer: 2000
+               })
+             }
+           });
+         } else {
+           throw new Error(
+             'O NIF que introduziu não é valido, verifique se este está correto!'
+           );
+         }
+       }).catch(error => {
+         Swal.fire({
+           html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
+           type: 'error',
+           showCloseButton: false,
+           showConfirmButton: false,
+           focusConfirm: false,
+           timer: 2000
+         })
+       })
+     }*/
+    }
 
 
   </script>
