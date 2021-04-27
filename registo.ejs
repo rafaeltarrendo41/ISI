@@ -288,17 +288,19 @@
           numero_de_identificacao_fiscal: nif.value,
           phone: intlphone.value
         }
+        console.log(properties);
 
         response = await fetch(`https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`).then(response => {
           if(response.status == 200){
             return response.json();
-            console.log(response.json());
+            console.log(response);
             Swal.fire('Deu')
           } else {
             Swal.fire("Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!");
           }
         }).then(result => {
-          Swal.fire(result)
+          //Swal.fire(result)
+          console.log(result);
         })
 
       })
