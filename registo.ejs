@@ -368,7 +368,7 @@
           );
         }
       }).then(result => {
-        alert(result.nif_validation);
+        Swal.fire(result.nif_validation);
         if (result.nif_validation) {
           let data = {
             name: document.getElementById("company").value,
