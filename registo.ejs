@@ -326,7 +326,7 @@
               return response.json();
             }).then(result => {
               console.log(result);
-              if (result.message == "User inserted with success") {
+              if (result.body.message == "User inserted with success") {
                 Swal.fire({
                   title: 'Registo efetuado com sucesso!',
                   timer: 2000
