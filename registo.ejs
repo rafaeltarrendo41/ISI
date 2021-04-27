@@ -291,7 +291,7 @@
           numero_de_identificacao_fiscal: nif.value,
           phone: intlphone.value
         }
-        console.log(properties);
+        //console.log(properties);
 
         return fetch(
           `https://cors-anywhere.herokuapp.com/https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
@@ -314,7 +314,7 @@
               }
             }
 
-            return fetch(`${urlBase}/register`, {
+            return fetch(`https://wtransnet.herokuapp.com/register`, {
               headers: {
                 'Content-Type': 'application/json'
               },
