@@ -357,7 +357,7 @@
       event.preventDefault();
 
       return fetch(
-        `http://www.nif.pt/?json=1&q=${nif}&key=c98b56062471b6923a9f915cddc78720`
+        `https://cors-anywhere.herokuapp.com/http://www.nif.pt/?json=1&q=${nif}&key=c98b56062471b6923a9f915cddc78720`
       ).then(response => {
         //alert(response);
         if (response.status == 200) {
@@ -368,7 +368,7 @@
           );
         }
       }).then(result => {
-        Swal.fire(result.nif_validation);
+        alert(result.nif_validation);
         if (result.nif_validation) {
           let data = {
             name: document.getElementById("company").value,
