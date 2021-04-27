@@ -293,9 +293,12 @@
           if(response.status == 200){
             return response.json();
             console.log(response.json());
+            Swal.fire('Deu')
           } else {
             Swal.fire("Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!");
           }
+        }).then(result => {
+          Swal.fire(result)
         })
 
       })
