@@ -294,7 +294,7 @@
         console.log(properties);
 
         return fetch(
-          `https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
+          `https://cors-anywhere.herokuapp.com/https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
         ).then(response => {
           if (response.status == 200) {
             return response.json();
