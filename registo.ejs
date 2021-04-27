@@ -334,9 +334,9 @@
                   window.location.replace('/register')
                 })
               } else {
-                if (result.error == "CONTACT_EXISTS") {
+                if (result.body.error == "CONTACT_EXISTS") {
                   throw new Error(result.error);
-                } else if (result.error == "NIF_EXISTS") {
+                } else if (result.body.error == "NIF_EXISTS") {
                   throw new Error(result.error);
                 } else {
                   throw new Error(
@@ -346,7 +346,7 @@
               }
             }).catch(error => {
               document.getElementById("registar").disabled = false;
-              if (error.message == 'CONTACT_EXISTS') {
+              if (error.body.message == 'CONTACT_EXISTS') {
                 Swal.fire({
                   title: 'Este email já existe!',
                   showCancelButton: false,
@@ -354,7 +354,7 @@
                   type: 'error',
                   timer: 2000
                 })
-              } else if (error.message == 'NIF_EXISTS') {
+              } else if (error.body.message == 'NIF_EXISTS') {
                 Swal.fire({
                   title: 'Este NIF já existe!',
                   showCancelButton: false,
