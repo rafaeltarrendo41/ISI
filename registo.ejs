@@ -229,7 +229,7 @@
       <div class="in">
         <input type="text" id="nome" name="fname" placeholder="Nome da Empresa"> <br>
         <input type="text" id="pass" name="lname" placeholder="Palavra-Pass"> <br>
-        <input type="text" id="email" name="lname" placeholder="Email"> <br>
+        <input type="email" id="email" name="lname" placeholder="Email"> <br>
         <input type="number" id="nif" name="lname" placeholder="Nif"> <br>
         <input type="number" id="telefone" name="lname" placeholder="Telefone"> <br>
         <div class=cae>
@@ -269,11 +269,7 @@
  
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
-  function sweet(){
-    Swal.fire('Hello world!')
-  }
-  
-  /*
+
     const registar = document.getElementById('registar');
     const urlBase = `<%=urlBase%>`;
     Swal('Bem vindo')
@@ -342,8 +338,9 @@
 
 
     intlphone.addEventListener("change", (event) => {
-        if (intlphone.value.length > 9) {
-          intlphone.setCustomValidity("Insira no máximo 9 caracteres!");
+        if (intlphone.value.length != 9) {
+          intlphone.setCustomValidity("Insira um número com 9 caracteres!");
+          document.getElementById("registar").disabled = true;
         } else {
           intlphone.setCustomValidity("");
           document.getElementById("registar").disabled = false;
@@ -352,10 +349,10 @@
 
     
 
-    const egg02 = document.getElementById("egg02");
+    //const egg02 = document.getElementById("egg02");
 
 
-    egg02.addEventListener('submit', (event) => {
+    function register(){
       document.getElementById("registar").disabled = true;
       event.preventDefault();
 
@@ -377,11 +374,11 @@
             name: document.getElementById("company").value,
             email: document.getElementById("email").value,
             phone: document.getElementById("intlphone").value,
-            zip: document.getElementById("zip").value,
+           // pass: document.getElementById("pass").value,
             numero_de_identificacao_fiscal: document.getElementById("nif").value,
             pass: pass.value,
           }
-          alert(data)
+          console.log(data);
           return fetch(`${urlBase}/register`, {
             headers: {
               'Content-Type': 'application/json'
@@ -458,8 +455,9 @@
           timer: 2000
         })
       })
-    })
-*/
+    }
+  
+
   </script>
 
 
