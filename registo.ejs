@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link href='https://fonts.googleapis.com/css?family=Montserrat|Staatliches&display=swap' rel='stylesheet' />
-  <link href="./node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet"/>
+  <link href="./node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
   <style>
     /* The navigation menu */
     .navbar {
@@ -221,7 +222,7 @@
   </div>
 
   <div class="container1">
-    <div class="form">
+    <form id="form" class="form">
       <div class="titulo">
         <h2>Comece a Usufruir Grátis da Wtransnet</h2>
       </div> <br>
@@ -239,10 +240,10 @@
         <div>
 
 
-          <button onclick="register()" type="button" id="registar" class="btn1"> REGISTAR </button>
+          <button type="submit" id="registar" class="btn1"> REGISTAR </button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
   <div id="FIMfim">
@@ -266,78 +267,100 @@
   </div>
 
   <body style="height:200%; width:100%;"></body>
- 
+
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
+    window.onload = () => {
+      const addUtilizador = document.getElementById('form');
+      //const urlBase = `<%=urlBase%>`;
+      addUtilizador.addEventListener("submit", async (event) => {
+        Swal.fire('Bem vindo')
 
-    const registar = document.getElementById('registar');
-    const urlBase = `<%=urlBase%>`;
-    Swal.fire('Bem vindo')
-
-    const company = document.getElementById('nome');
-    const pass = document.getElementById('pass');
-    const email = document.getElementById('email');
-    const intlphone = document.getElementById('telefone');
-    const nif = document.getElementById('nif');
-    
-
-    company.addEventListener("change", (event) => {
-      const letras = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
-      if (company.value.match(letras)) {
-        company.setCustomValidity("");
-        document.getElementById("registar").disabled = false;
-      } else {
-        company.setCustomValidity("Insira apenas letras!");
-      }
-    })
-
-    pass.addEventListener("change", (event) => {
-      if (pass.value.length >= 9) {
-        let validator = {
-          maiuscula: 0,
-          minuscula: 0,
-          numero: 0,
-          especial: 0
+        const company = document.getElementById('nome');
+        const pass = document.getElementById('pass');
+        const email = document.getElementById('email');
+        const intlphone = document.getElementById('telefone');
+        const nif = document.getElementById('nif');
+        const properties = {
+          company: company.value,
+          pass: pass.value,
+          email: email.value,
+          numero_de_identificacao_fiscal: nif.value,
+          phone: intlphone.value
         }
 
-        for (let i = 0; i < pass.value.length; i++) {
-          if ("0123456789".includes(pass.value.charAt(i))) {
-            validator.numero = 1;
-          } else if ("[`!@#$%^&*()_+-=[]{};':\"\\|,.<>/?~]".includes(pass.value.charAt(i))) {
-            validator.especial = 1;
-          } else if (pass.value.charAt(i) === pass.value.charAt(i).toLowerCase()) {
-            validator.minuscula = 1;
-          } else if (pass.value.charAt(i) === pass.value.charAt(i).toUpperCase()) {
-            validator.maiuscula = 1;
+        response = await fetch(`https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`).then(response => {
+          if(response.status == 200){
+            return response.json();
+            console.log(response.json());
+          } else {
+            Swal.fire("Não foi possivel verificar o seu NIF. Por favor tente novamente mais tarde!");
           }
+        })
+
+      })
+
+
+
+
+
+      /*company.addEventListener("change", (event) => {
+        const letras = /^[a-záàâãéèêíïóôõöúçñ ]+$/i;
+        if (company.value.match(letras)) {
+          company.setCustomValidity("");
+          document.getElementById("registar").disabled = false;
+        } else {
+          company.setCustomValidity("Insira apenas letras!");
         }
-        if (validator.maiuscula + validator.minuscula + validator.especial + validator.numero < 3) {
+      })
+
+      pass.addEventListener("change", (event) => {
+        if (pass.value.length >= 9) {
+          let validator = {
+            maiuscula: 0,
+            minuscula: 0,
+            numero: 0,
+            especial: 0
+          }
+
+          for (let i = 0; i < pass.value.length; i++) {
+            if ("0123456789".includes(pass.value.charAt(i))) {
+              validator.numero = 1;
+            } else if ("[`!@#$%^&*()_+-=[]{};':\"\\|,.<>/?~]".includes(pass.value.charAt(i))) {
+              validator.especial = 1;
+            } else if (pass.value.charAt(i) === pass.value.charAt(i).toLowerCase()) {
+              validator.minuscula = 1;
+            } else if (pass.value.charAt(i) === pass.value.charAt(i).toUpperCase()) {
+              validator.maiuscula = 1;
+            }
+          }
+          if (validator.maiuscula + validator.minuscula + validator.especial + validator.numero < 3) {
+            swal({
+              html: '<strong><h3>A sua palavra-passe deve conter pelo menos três dos seguintes caracteres: um caracter especial, uma letra maiúscula, uma letra minúscula ou um número!</h3></strong>',
+              type: 'error',
+              showCloseButton: true,
+              showConfirmButton: false,
+              focusConfirm: false,
+              timer: 9000
+            })
+          } else {
+            pass.setCustomValidity("");
+            document.getElementById("registar").disabled = false;
+          }
+        } else {
           swal({
-            html: '<strong><h3>A sua palavra-passe deve conter pelo menos três dos seguintes caracteres: um caracter especial, uma letra maiúscula, uma letra minúscula ou um número!</h3></strong>',
+            html: '<strong><h3>A sua palavra-passe deve conter no mínimo 9 caracteres.</h3></strong>',
             type: 'error',
             showCloseButton: true,
             showConfirmButton: false,
             focusConfirm: false,
             timer: 9000
           })
-        } else {
-          pass.setCustomValidity("");
-          document.getElementById("registar").disabled = false;
         }
-      } else {
-        swal({
-          html: '<strong><h3>A sua palavra-passe deve conter no mínimo 9 caracteres.</h3></strong>',
-          type: 'error',
-          showCloseButton: true,
-          showConfirmButton: false,
-          focusConfirm: false,
-          timer: 9000
-        })
-      }
-    })
+      })
 
 
-    intlphone.addEventListener("change", (event) => {
+      intlphone.addEventListener("change", (event) => {
         if (intlphone.value.length != 9) {
           intlphone.setCustomValidity("Insira um número com 9 caracteres!");
           document.getElementById("registar").disabled = true;
@@ -345,15 +368,15 @@
           intlphone.setCustomValidity("");
           document.getElementById("registar").disabled = false;
         }
-    })
-
-    
-
-    //const egg02 = document.getElementById("egg02");
+      })*/
 
 
-    function register(){
-      document.getElementById("registar").disabled = true;
+
+      //const egg02 = document.getElementById("egg02");
+
+
+
+     /* document.getElementById("registar").disabled = true;
       event.preventDefault();
 
       return fetch(
@@ -374,7 +397,7 @@
             name: document.getElementById("company").value,
             email: document.getElementById("email").value,
             phone: document.getElementById("intlphone").value,
-           // pass: document.getElementById("pass").value,
+            // pass: document.getElementById("pass").value,
             numero_de_identificacao_fiscal: document.getElementById("nif").value,
             pass: pass.value,
           }
@@ -455,11 +478,13 @@
           timer: 2000
         })
       })
-    }
-  
+    }*/
+  }
+
 
   </script>
 
 
 </body>
+
 </html>
