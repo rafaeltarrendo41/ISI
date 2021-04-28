@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 <head>
   <link href='https://fonts.googleapis.com/css?family=Montserrat|Staatliches&display=swap' rel='stylesheet'/>	
 <style>
@@ -7,43 +7,11 @@
   
     /* The navigation menu */
     .navbar {
-      
+      overflow: hidden;
       background-color: #02475e;
       display: flex;
    justify-content: center;
-   
     }
-
-    .navbar li ul li{
-  display:block;
-  width:150px;
-
-}
-
-.navbar li {
-position:relative;
-float: left;
-font-size: 16px;
-color: white;
-text-align: center;
-text-decoration: none;
-display: flex;
-justify-content: center;
-
-}
-
-.navbar li ul{
-position:absolute;
-top:25px;
-left:0;
-background-color: #02475e;
-display: none;
-text-align: center;
-padding: 0px 3px;
-
-}
-
-.navbar li:hover ul, .navbar li.over ul{display:block;}
     
     /* Navigation links */
     .navbar a {
@@ -55,7 +23,6 @@ padding: 0px 3px;
       text-decoration: none;
       display: flex;
    justify-content: center;
-   text-align: left;
     }
     
     
@@ -77,28 +44,18 @@ padding: 0px 3px;
       margin-top:10%
     }
  
-    main{
-      width: 100%;
-            min-height: 100vh;
-            background: linear-gradient(#fff, #80EAFF);
-            display: flex;
-            justify-content: center;
-            box-shadow: inset 0px 2px 3px rgba(0, 0,0, 0.25);
+    .container1{
+        width: 37%;
+        position: relative;
+        left: 50%;
+       
+        margin-top: 20%;
+        transform: translate(-50%,-50%);
+        height: 50vh;
+        background-color: #f8f9fb;
+        display: flex;
+        box-shadow: 5px 10px 38px rgba(0, 0, 0, 0.2);
     }
-
-    main .form{
-        margin-left: 4%;
-         margin-top: 5%;   
-         width: 35%;
-         height: 65vh;
-         background-color: #DCDCDC;
-         box-shadow: 0px 3px 4px rgba(0, 0,0, 0.4) ;
-         border-radius: 18px;
-         padding: 2%;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-        }
     input{
         outline:none;
         
@@ -118,29 +75,49 @@ padding: 0px 3px;
       margin-left: 20%;
       margin-top:10%;
     }
-   
-    
 
+   
+
+    .btn1{
+ 
+      padding: 0.4 rem;
+      background-color:#058101;
+      cursor: pointer;
+      color: white;
+      border-radius: 4px;
+      font-size:18px;
+      font-weight:bold;
+
+    }
+    .btn2{
+ 
+ padding: 0.4 rem;
+ background-color:#ff0000;
+ cursor: pointer;
+ color: white;
+ border-radius: 4px;
+ font-size:18px;
+ font-weight:bold;
+
+}
+    .cae{
+      text-align:left;
+    }
     .table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-      td, th {
-        border: 1px solid #dddddd;
-        text-align: center;
-        padding: 8px;
-      }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
 
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-
-    .cae{
-      text-align:left;
-    }
-
     #FIMfim{
 
 width: 100%;
@@ -258,53 +235,59 @@ color: white;
   <a href="#contact">QAP</a>
   <a href="#contact">Empresa</a>
   <a href="#contact">Blog</a>
-  <li> <a href="#contact">Perfil</a>
-    <ul>
-      <li> <a href="#contact">Documentação</a> </li>
-      <li> <a href="#contact">Perfil</a> </li>
-    </ul>
-  </li> 
 </div>
-<main>
 
-<div class="form">
-  <div class ="titulo">
-    <h2>OS SEUS DOCUMENTOS</h2>
+<div class="container1">
+  <div class="form">
+    <div class ="titulo">
+    <h2>UTILIZADORES REGISTADOS</h2>
     </div> <br>
 
     <p align='center'>	  
-      <table width='100%' >
-          <tr>
-          <th>Documento</th>
-          <th>Visualizar</th>
-          </tr>  
-          <tr>
-          <td>Digitalização do BI/CC</td>
-          <td>
-            <!--falta pôr o <a href=" " download> -->
-            <button class="button2"><i class="fa fa-download"></i>Visualizar Ficheiro</button></td>
-          </tr>
-          <tr>
-          <td>Cópia de Recibo de Vencimento</td>
-          <td>
-            <!--falta pôr o <a href=" " download> -->
-            <button class="button2"><i class="fa fa-download"></i>Visualizar Ficheiro</button></td>
-           </tr>
-           <tr>
-            <td>CAE</td>
+        <table width='100%' >
+            <tr>
+            <th>Utilizadores</th>
+            <th>Documentos</th>
+            <th>Validar</th>
+            </tr>  
+            <tr>
+            <td>Tranfesa</td>
             <td>
-              
               <!--falta pôr o <a href=" " download> -->
-              <button class="button2"><i class="fa fa-download"></i>Visualizar Ficheiro</button></td>
+              <button class="button2"><i class="fa fa-download"></i>Visualizar CAE</button></td>
+            
+            <td>
+              <button type="submit" class="btn1"> Validar </button>
+              <button type="submit" class="btn2"> Eliminar </button>
+            </td>
             </tr>
-          
-          
-      </table>	
-      </p>
+            <tr>
+            <td>Transped</td>
+            <td>
+              <!--falta pôr o <a href=" " download> -->
+              <button class="button2"><i class="fa fa-download"></i>Visualizar CAE</button></td>
+              <td>
+                <button type="submit" class="btn1"> Validar </button>
+                <button type="submit" class="btn2"> Eliminar </button>
+              </td>
+                
+             </tr>
+             <tr>
+              <td>Vicarli</td>
+              <td>
+                <!--falta pôr o <a href=" " download> -->
+                <button class="button2"><i class="fa fa-download"></i>Visualizar CAE</button></td>
+                <td>
+                  <button type="submit" class="btn1"> Validar </button>
+                  <button type="submit" class="btn2"> Eliminar </button></td>
+              </tr>
+            
+            
+        </table>	
+        </p>
 </div>
 </div>
-
-</main>
+</div>
 
 <div id="FIMfim">
 	
@@ -325,7 +308,7 @@ color: white;
 © Copyright 2012 - 2020 Josimar Junior Evangelista Criste - Todos os direitos reservados.
 				</div>
 	</div>
+  <body style="height:200%; width:100%;"></body>
       
 
 </body>
-</html>
