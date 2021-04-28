@@ -4,11 +4,43 @@
 <style>
     /* The navigation menu */
     .navbar {
-      overflow: hidden;
+      
       background-color: #02475e;
       display: flex;
    justify-content: center;
     }
+
+    .navbar li ul li{
+  display:block;
+  width:150px;
+
+}
+
+.navbar li {
+position:relative;
+float: left;
+font-size: 16px;
+color: white;
+text-align: center;
+text-decoration: none;
+display: flex;
+justify-content: center;
+
+}
+
+.navbar li ul{
+position:absolute;
+top:25px;
+left:0;
+background-color: #02475e;
+display: none;
+text-align: center;
+padding: 0px 3px;
+
+}
+
+.navbar li:hover ul, .navbar li.over ul{display:block;}
+    
     
     /* Navigation links */
     .navbar a {
@@ -38,24 +70,87 @@
         padding: 0px 0px;
     }
 
+    main{
+      width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(#fff, #80EAFF);
+            display: flex;
+            justify-content: center;
+            box-shadow: inset 0px 2px 3px rgba(0, 0,0, 0.25);
+    }
+
+    main form{
+        margin-left: 4%;
+         margin-top: 5%;   
+         width: 35%;
+         height: 80vh;
+         background-color: #DCDCDC;
+         box-shadow: 0px 3px 4px rgba(0, 0,0, 0.4) ;
+         border-radius: 18px;
+         padding: 1px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+        }
+
+        main form button{
+          background-color:  #fff;
+            width: 200px;;
+            height: 40px;
+            border: 0;
+            outline: 0;
+            border-radius: 12px;
+            margin-top: 10%;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 31%;
+                
+            color: #000;
+        }
+     
+        main form .inputs-container{
+            margin-top: 1px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        main form .inputs-container input{
+            width: 450px;
+            height: 30px;
+            padding: 8px 15px;
+            border: 0;
+            outline: 0;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #312e42;
+            box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+            background-color: #fff;
+            
+        }
+
+        main form .inputs-container h2{
+            text-align: center;
+            font-weight: 600;
+            font-size: 30px;
+            margin-top: 0%;
+            padding: 10px 0px;
+        }
+        
+        main form .inputs-container input:focus{
+            box-shadow: inset 1px 4px 7px rgba(0, 0, 0, 0.5);
+        }
+
     .titulo{
       text-align: center;
       margin-top:10%
     }
  
-    .container1{
-        width: 47%;
-        position: relative;
-        left: 50%;
-       
-        margin-top: 25%;
-        transform: translate(-50%,-50%);
-        height: 100vh;
-        background-color: #f8f9fb;
-        display: flex;
-        box-shadow: 5px 10px 38px rgba(0, 0, 0, 0.2);
-        font-family: "Cairo", sans-serif;
-    }
+    
+    
     input{
         outline:none;
         
@@ -63,10 +158,10 @@
     input{
       display: block;
         width: 100%;
-        font-size:13px;
+        font-size:10px;
         background: transparent;
         color: #0f0f0f;
-        font-weight: 500;
+        font-weight: 400;
         
         padding: 10px 0px;
     }
@@ -79,17 +174,6 @@
 
    
 
-    .btn1{
-      margin-top: 2rem;
-      padding: 0.4 rem;
-      background-color:#FF0054;
-      cursor: pointer;
-      color: white;
-      border-radius: 4px;
-      font-size:18px;
-      font-weight:light;
-
-    }
 
  
     
@@ -118,10 +202,16 @@
   <a href="#contact">QAP</a>
   <a href="#contact">Empresa</a>
   <a href="#contact">Blog</a>
+  <li> <a href="#contact">Perfil</a>
+    <ul>
+      <li> <a href="#contact">Documentação</a> </li>
+      <li> <a href="#contact">Perfil</a> </li>
+    </ul>
+  </li> 
 </div>
-
-<div class="container1">
-<div class="form">
+<main>
+<form>
+<section class="inputs-container">
     <div class ="titulo">
     <h2> Altere os dados do seu Perfil   </h2>
     </div> <br>
@@ -132,17 +222,14 @@
     <input type="email" id="lname" name="lname" placeholder=" Email"> <br>
     <input type="number" id="lname" name="lname" placeholder=" Nif"readonly>  <br>
     <input type="number" id="lname" name="lname" placeholder=" Telefone"> <br>
-   <!--  <div class=cae>
-      <label>Documento CAE:</label>
-      <input type="file" id="lname" name="lname" placeholder="CAE">   
-    </div> -->
-    <div>
-   
-    
+
+    <div> 
     <button type="submit" class="btn1"> EDITAR </button>
   </div>
 </div>
-</div>
+</form>
+</main>
+</section>
 
 <!-- <div class='container_wrap footer_color' id='footer'>
 
