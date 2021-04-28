@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const validator = require('express-validator');
 const sanitizer = require('express-sanitizer');
+const { request } = require('express');
 
 
 app.use(bodyParser.json({
@@ -44,6 +45,14 @@ app.get("/register", (request, response) => {
 app.get("/login", (request, response) => {
     response.set('Content-Type', 'text/html');
     response.render(`${dirName}/Login`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
+
+app.get("/carga", (request, response) => {
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/publicarCarga`, {
         urlBase: urlBase,
         ver: version
     });
