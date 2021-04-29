@@ -461,10 +461,13 @@
                     return response.json();
                 }).then(result => {
                     if (result.body.verificado == true) {
+                        if(result.body.tipo == Transportadora){
+                            window.location.replace('/transportes');
+                        } else {
+                            window.location.replace('/carga')
+                        }
                         Swal.fire({
                             title: 'Login com sucesso'
-                        }).then(result => {
-                            window.location.replace('/register')
                         })
                     } else {
                         if (result.body.message == "Utilizador não verificado") {
