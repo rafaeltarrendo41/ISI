@@ -289,15 +289,7 @@
         const intlphone = document.getElementById('telefone');
         const nif = document.getElementById('nif');
         const tipo = document.getElementById('tipo');
-        const properties = {
-          company: company.value,
-          pass: pass.value,
-          email: email.value,
-          numero_de_identificacao_fiscal: nif.value,
-          phone: intlphone.value,
-          tipo: tipo.value
-        }
-        //console.log(properties);
+     
 
         return fetch(
           `https://cors-anywhere.herokuapp.com/https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
@@ -316,7 +308,8 @@
                 pass: pass.value,
                 email: email.value,
                 numero_de_identificacao_fiscal: nif.value,
-                phone: intlphone.value
+                phone: intlphone.value,
+                tipo: tipo.value
               }
             }
 
