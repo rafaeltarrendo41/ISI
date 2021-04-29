@@ -58,4 +58,12 @@ app.get("/carga", (request, response) => {
     });
 })
 
+app.get("/transporte", (request, response) => {
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/publicarTransporte`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
+
 app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));
