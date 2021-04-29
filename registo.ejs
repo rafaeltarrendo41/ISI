@@ -233,7 +233,7 @@
         <input type="email" id="email" name="lname" placeholder="Email"> <br>
         <input type="number" id="nif" name="lname" placeholder="Nif"> <br>
         <input type="number" id="telefone" name="lname" placeholder="Telefone"> <br>
-        <select>
+        <select id="tipo">
           <option>Transportadora</option>
           <option>Operador Logistico</option>
         </select>
@@ -288,6 +288,8 @@
         const email = document.getElementById('email');
         const intlphone = document.getElementById('telefone');
         const nif = document.getElementById('nif');
+        const tipo = document.getElementById('tipo');
+        console.log(tipo.value);
         const properties = {
           company: company.value,
           pass: pass.value,
