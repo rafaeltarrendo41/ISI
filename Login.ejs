@@ -463,10 +463,13 @@
                 }).then(result => {
                     console.log(result);
                     if (result.verificado == true) {
+                        console.log('Aquiiiii')
                         if(result.body.tipo == Transportadora){
+                            console.log('aliiii')
                             window.location.replace('/transporte');
                         } else {
                             window.location.replace('/carga')
+                            console.log('cargaaaa')
                         }
                         Swal.fire({
                             title: 'Login com sucesso'
