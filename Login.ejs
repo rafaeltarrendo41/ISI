@@ -464,7 +464,7 @@
                     console.log(result);
                     if (result.verificado == true) {
                         console.log('Aquiiiii')
-                        if(result.body.tipo == Transportadora){
+                        if(result.tipo == Transportadora){
                             console.log('aliiii')
                             window.location.replace('/transporte');
                         } else {
@@ -475,11 +475,11 @@
                             title: 'Login com sucesso'
                         })
                     } else {
-                        if (result.body.message == "Utilizador não verificado") {
+                        if (result.message == "Utilizador não verificado") {
                             Swal.fire('Utilizador não verificado');
-                        } else if (result.body.message == "Password Incorreta") {
+                        } else if (result.message == "Password Incorreta") {
                             Swal.fire('Password Incorreta');
-                        } else if (result.body.message == "user not found") {
+                        } else if (result.message == "user not found") {
                             Swal.fire('user not found');
                         }
                     }
