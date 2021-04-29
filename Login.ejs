@@ -462,7 +462,7 @@
                     return response.json();
                 }).then(result => {
                     console.log(result);
-                    if (result.body.verificado == true) {
+                    if (result.verificado == true) {
                         if(result.body.tipo == Transportadora){
                             window.location.replace('/transporte');
                         } else {
