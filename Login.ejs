@@ -464,16 +464,20 @@
                     console.log(result);
                     if (result.verificado == true) {
                         console.log('Aquiiiii')
-                        if(result.tipo == Transportadora){
+                        if(result.tipo == "Transportadora"){
                             console.log('aliiii')
                             window.location.replace('/transporte');
+                             Swal.fire({
+                            title: 'Login com sucesso'
+                        })
                         } else {
                             window.location.replace('/carga')
                             console.log('cargaaaa')
-                        }
-                        Swal.fire({
+                            Swal.fire({
                             title: 'Login com sucesso'
-                        })
+                            })
+                        }
+                       
                     } else {
                         if (result.message == "Utilizador não verificado") {
                             Swal.fire('Utilizador não verificado');
