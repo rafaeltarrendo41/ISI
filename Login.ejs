@@ -448,6 +448,7 @@
                     email: email,
                     pass: pass
                 }
+                console.log(properties);
 
                 return fetch(`https://wtransnet.herokuapp.com/login`, {
                     headers: {
@@ -460,6 +461,7 @@
                 }).then(response => {
                     return response.json();
                 }).then(result => {
+                    console.log(result);
                     if (result.body.verificado == true) {
                         if(result.body.tipo == Transportadora){
                             window.location.replace('/transportes');
