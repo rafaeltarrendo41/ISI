@@ -350,6 +350,8 @@
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
     window.onload = () => {
+      const aa = localStorage.getItem('companyID');
+      console.log(aa);
       const form = document.getElementById('formCarga');
 
       form.addEventListener("submit", async (event) => {
