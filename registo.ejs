@@ -344,13 +344,13 @@
   </div>
 
   <body style="height:200%; width:100%;"></body>
-  <script>
+  <!-- <script>
     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") { var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value); elems["ts"] = JSON.stringify(new Date().getTime()); document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
 
     function enableBtn() {
       document.getElementById("button").disabled = false;
     }
-  </script>
+  </script> -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
