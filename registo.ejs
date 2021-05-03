@@ -362,26 +362,6 @@
         document.getElementById("registar").disabled = true;
         event.preventDefault();
 
-        // function readFile() {
-        //   //var contents = document.getElementById('contents');
-        //   //Gets files from document element
-        //   var files = document.getElementById('ficheiro').files;
-        //   //Selects first File and assigns it to fil
-        //   var file = files[0];
-        //   //creates file reader
-        //   var reader = new FileReader();
-        //   //tells the file reader what to do after loading file
-        //   reader.onload = function (evt) {
-        //     //Prints contents of first file to the console
-        //     //console.log(evt.target.result);
-        //     //contents.innerHTML = evt.target.result;
-        //   }
-        //   //tells file reader to read file
-        //   reader.readAsBinaryString(file);
-        //   //Prevents page from refreshing
-        //   return false;
-        // }
-        // readFile();
         var files = document.getElementById('ficheiro').files;
         //console.log(files[0]);
         const company = document.getElementById('nome');
@@ -390,7 +370,10 @@
         const intlphone = document.getElementById('telefone');
         const nif = document.getElementById('nif');
         const tipo = document.getElementById('tipo');
-
+        var file = files[0];
+        var reader = new FileReader();
+        var cae = reader.readAsBinaryString(file);
+        console.log(cae);
 
         return fetch(
           `https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
@@ -430,9 +413,10 @@
 
                 let dados = {
                   companieId: result.body.id,
-                  file: files[0]
+                  file: cae
                 }
 
+                console.log(dados);
                 return fetch(`https://wtransnet.herokuapp.com/addFiles`, {
                   headers: {
                     "Access-Control-Allow-Origin": "*",
