@@ -306,12 +306,12 @@
         </select>
         <div class=cae>
           <label>Documento CAE:</label>
-          <input type="file" id="lname" name="lname" placeholder="CAE">
+          <input type="file" id="ficheiro" name="lname" placeholder="CAE">
         </div>
       </section>
 
-      <div >
-        <div  data-sitekey="6LdoHK4aAAAAAE11xgO3lmuf_sNoW-NhPo9Qtt5m" data-callback="enableBtn">
+      <div>
+        <div data-sitekey="6LdoHK4aAAAAAE11xgO3lmuf_sNoW-NhPo9Qtt5m" data-callback="enableBtn">
         </div>
       </div>
 
@@ -348,11 +348,10 @@
     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") { var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value); elems["ts"] = JSON.stringify(new Date().getTime()); document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
 
     function enableBtn() {
-        document.getElementById("button").disabled = false;
+      document.getElementById("button").disabled = false;
     }
-</script>
-  <script src="https://www.google.com/recaptcha/api.js" async
-  defer></script>
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
     const urlBase = `<%urlBase%>`;
@@ -362,7 +361,26 @@
       addUtilizador.addEventListener("submit", async (event) => {
         document.getElementById("registar").disabled = true;
         event.preventDefault();
-        // Swal.fire('Bem vindo')
+
+        function readFile() {
+          //var contents = document.getElementById('contents');
+          //Gets files from document element
+          var files = document.getElementById('ficheiro').files;
+          //Selects first File and assigns it to fil
+          var file = files[0];
+          //creates file reader
+          var reader = new FileReader();
+          //tells the file reader what to do after loading file
+          reader.onload = function (evt) {
+            //Prints contents of first file to the console
+            console.log(evt.target.result);
+            //contents.innerHTML = evt.target.result;
+          }
+          //tells file reader to read file
+          reader.readAsBinaryString(file);
+          //Prevents page from refreshing
+          return false;
+        }
 
         const company = document.getElementById('nome');
         const pass = document.getElementById('pass');
