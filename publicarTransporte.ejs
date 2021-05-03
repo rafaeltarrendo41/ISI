@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Staatliches&display=swap' rel='stylesheet'/>	
+  <link href="./node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+<style>
+
+  
+   /* The navigation menu */
+   .navbar {
+      
+      background-color: #02475e;
+      display: flex;
+   justify-content: center;
+   
+    }
+
+    .navbar li ul li{
+  display:block;
+  width:150px;
+
+}
+
+.navbar li {
+position:relative;
+float: left;
+font-size: 16px;
+color: white;
+text-align: center;
+text-decoration: none;
+display: flex;
+justify-content: center;
+
+}
+
+.navbar li ul{
+position:absolute;
+top:25px;
+left:0;
+background-color: #02475e;
+display: none;
+text-align: center;
+padding: 0px 3px;
+
+}
+
+.navbar li:hover ul, .navbar li.over ul{display:block;}
+    
+    /* Navigation links */
+    .navbar a {
+
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      font-family: "Cairo", sans-serif;
+      padding: 14px 16px;
+      text-decoration: none;
+      display: flex;
+   justify-content: center;
+   text-align: left;
+    }
+    
+    
+    /* Add a red background color to navigation links on hover */
+    .navbar a:hover {
+      background-color: #02475e;
+    }
+   
+
+    .topbar1{
+        font-size: 0;
+        margin-left: 5%;
+        padding: 0px 0px;
+    }
+
+    
+      
+ 
+    main{
+      width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(#fff, #80EAFF);
+            display: flex;
+            justify-content: center;
+            box-shadow: inset 0px 2px 3px rgba(0, 0,0, 0.25);
+    }
+
+    main form{
+        margin-left: 4%;
+         margin-top: 5%;   
+         width: 35%;
+         height: 70vh;
+         background-color: #DCDCDC;
+         box-shadow: 0px 3px 4px rgba(0, 0,0, 0.4) ;
+         border-radius: 18px;
+         padding: 2%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+        }
+
+        main form button{
+          background-color:  #fff;
+            width: 200px;;
+            height: 40px;
+            border: 0;
+            outline: 0;
+            border-radius: 12px;
+            margin-top: 10%;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 31%;
+                
+            color: #000;
+        }
+     
+
+        main form .inputs-container{
+            margin-top: 3%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        main form .inputs-container input{
+            width: 450px;
+            height: 45px;
+            padding: 8px 15px;
+            border: 0;
+            outline: 0;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #312e42;
+            box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+            background-color: #fff;
+            
+        }
+
+        main form .inputs-container h2{
+            text-align: center;
+            font-weight: 600;
+            font-size: 30px;
+            margin-top: 0%;
+            padding: 10px 0px;
+        }
+        
+        main form .inputs-container input:focus{
+            box-shadow: inset 1px 4px 7px rgba(0, 0, 0, 0.5);
+        }
+        input{
+        outline:none;
+        
+    }
+    input{
+      display: block;
+        width: 100%;
+        font-size:13px;
+        background: transparent;
+        color: #0f0f0f;
+        font-weight: 500;
+        padding: 10px 0px;
+    }
+    
+    
+    
+
+    
+
+
+
+            #FIMfim{
+
+        width: 100%;
+        margin-bottom: 0%;
+        min-width: 600px;	
+        color: white;
+        padding-bottom: 20px;
+        margin-left: -10px;
+        margin-right:  -15px;
+        height: 260px;
+        position: absolute;
+        align-items: center;
+        justify-content: center;  
+        display: flex;
+        padding-top: 30px;  
+        box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
+        background-color: #222222;
+        }
+        #col1{
+        min-width: 120px;	
+        padding-top: 0px;	
+        top: 0px;
+        margin-bottom:  230px;
+        width: 250px;
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 55px;
+        display: inline-block;
+        text-align: left;
+        line-height: 55px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        position: relative;   
+        }
+        #col2{
+        min-width: 160px;	
+        padding-top: 0px;	
+        top: 0px;
+        margin-top: -180px;
+        width: 100px;
+        padding-left: 0px;
+        padding-right: 100px;
+        height: 55px;
+        display: inline-block;
+        text-align: left;
+        line-height: 55px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10px;
+        position: relative;   
+        }
+        #col3{
+        min-width: 120px;	
+        padding-top: 0px;	
+        top: 0px;
+        margin-top: -180px;
+        width: 170px;
+        padding-left: 5px;
+        padding-right: 0px;
+        height: 55px;
+        display: inline-block;
+        text-align: left;
+        line-height: 55px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        position: relative;   
+        }
+        #col4{
+        text-align: center;
+        min-width: 120px;	
+        padding-top: 0px;	
+        top: 0px;
+        margin-bottom:  50px;
+        width: 180px;
+        padding-left: 0px;
+        padding-right: 20px;
+        height: 55px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        position: relative;   
+        }
+        .rdp:link {
+        text-decoration: none;
+        color: white;	
+        }
+        .rdp:visited {
+        text-decoration: none;
+        color: white;
+        }
+
+            
+    
+</style>
+</head>
+<body>
+
+ 
+   
+<!-- Load font awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<section id="topbar" class="topbar1">
+<div class="logo">
+    <h2><img src="https://github.com/rafaeltarrendo41/ISI/blob/main/Templates/uploads_sites/2/2016_01/wtransnet_logo.png?raw=true"></h2>
+<div class="aceder">
+</div>
+</div>
+</section>
+
+<!-- The navigation menu -->
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="#About">Soluções</a>
+  <a href="#contact">Porquê wtransnet?</a>
+  <a href="#contact">Tarifas</a>
+  <a href="#contact">Clientes</a>
+  <a href="#contact">QAP</a>
+  <a href="#contact">Empresa</a>
+  <a href="#contact">Blog</a>
+  <li> <a href="#contact">Perfil</a>
+    <ul>
+      <li> <a href="#contact">Documentação</a> </li>
+      <li> <a href="#contact">Perfil</a> </li>
+    </ul>
+  </li> 
+  
+</div>
+
+<main>
+<form id="formTransporte">
+  <section class="inputs-container">
+    <div class ="titulo">
+    <h2>Publicar Transporte</h2>
+    </div> <br>
+
+    <div class="in">
+      <input type="text" id="origem" name="fname" placeholder="Origem"> <br>
+      <input type="text" id="destino" name="lname" placeholder="Destino"> <br>
+      <input type="text" id="especialidade" name="lname" placeholder="Especialidade"> <br>
+      <input type="number" id="kg" name="lname" placeholder="KG"> <br>
+  
+    <div>
+    <button type="submit" id="btn-submeter" class="btn1"> SUBMETER </button>
+  </div>
+</div>
+
+</form>
+</main>
+</section>
+
+<div id="FIMfim">
+	
+	<div id="col2">
+	<a class="rdp" href="" >Soluções</a><br />
+	<a class="rdp" href="">Bolsa de Cargas</a><br />
+	<a class="rdp" href="" >Bolsa de Rotas</a>  <br/>
+	<a class="rdp" href="" >App Wtransnet Cargo</a>
+	</div>
+	<div id="col3">
+   <a class="rdp" href="https://youtube.com/informaticode" target="_blank">Youtube</a><br />
+    <a class="rdp" href="https://instagram.com/informaticode" target="_blank">Instagram</a><br />
+    <a class="rdp" href="https://facebook.com/informaticode" target="_blank">Facebook</a><br />
+	<a class="rdp" href="https://www.informaticode.com.br/p/sobre.html">Sobre</a><br />
+  <br />
+	</div>
+	<div id="col4">
+© Copyright 2012 - 2020 Josimar Junior Evangelista Criste - Todos os direitos reservados.
+				</div>
+	</div>
+  <body style="height:200%; width:100%;"></body>
+  <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+  <script>
+    window.onload = () => {
+      const aa = localStorage.getItem('companyID');
+      console.log(aa);
+      const form = document.getElementById('formTransporte');
+
+      form.addEventListener("submit", async (event) => {
+        document.getElementById("btn-submeter").disabled = true;
+        event.preventDefault();
+
+        const origem = document.getElementById("origem");
+        const destino = document.getElementById("destino");
+        const especialidade = document.getElementById("especialidade");
+        const peso = document.getElementById("kg");
+
+        let properties = {
+          itemKey: especialidade.value,
+          description: peso.value
+        }
+
+        console.log(properties);
+        return fetch(`https://wtransnet.herokuapp.com/insertProductJASMIN`, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify(properties)
+      
+        }).then(response => {
+          return response.json();
+        }).then(result => {
+          if(result.message == "criado"){
+            Swal.fire('Carga criada com sucesso')
+          }else if(result.message == "erro ao adicionar produto"){
+            Swal.fire('Erro ao criar o trensporte')
+          }
+          Swal.fire(result);
+        }).catch(error => {
+          document.getElementById("btn-submeter").disabled = false;
+          Swal.fire({
+            html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
+            showCancelButton: false,
+            showConfirmButton: false,
+            type: 'error',
+            timer: 2000
+          })
+        })
+      })
+    }
+  </script>
+      
+
+</body>

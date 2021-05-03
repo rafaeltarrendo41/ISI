@@ -381,6 +381,11 @@
         }).then(response => {
           return response.json();
         }).then(result => {
+          if(result.message == "criado"){
+            Swal.fire('Carga criada com sucesso')
+          }else if(result.message == "erro ao adicionar produto"){
+            Swal.fire('Erro ao criar a carga')
+          }
           Swal.fire(result);
         }).catch(error => {
           document.getElementById("btn-submeter").disabled = false;
