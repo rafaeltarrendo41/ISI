@@ -365,7 +365,7 @@
 
       
         var files = document.getElementById('ficheiro');
-        const formData = new FormData();
+        const formData = new FileReader();
         formData.append("cae", files.files[0]);
 
         console.log(formData);
@@ -416,7 +416,7 @@
 
                 let dados = {
                   companieId: result.body.id,
-                  file: formData
+                  file: formData.readAsBinaryString(true)
                 }
 
                 console.log(dados);
