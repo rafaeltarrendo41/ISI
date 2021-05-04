@@ -431,6 +431,7 @@
                 }).then(response => {
                   return response.json();
                 }).then(result => {
+                  console.log(result);
                   if (result.body.anexos == true) {
                     Swal.fire({
                       title: 'Registo efetuado com sucesso!',
