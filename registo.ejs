@@ -363,17 +363,10 @@
         document.getElementById("registar").disabled = true;
         event.preventDefault();
 
-      
-        var files = document.getElementById('ficheiro').files;
-        var fileReader = new FileReader();
-        fileReader.onload = function(){
-          alert(fileReader.result);
-        }
-        fileReader.readAsBinaryString(files[0]);
-       // formData.append("cae", files.files[0]);
-
-        console.log(fileReader);
-        
+       const file = document.getElementById('ficheiro').files;
+       var formData = new FormData();
+       formData.append('file', file[0]);
+        console.log(formData);
         const company = document.getElementById('nome');
         const pass = document.getElementById('pass');
         const email = document.getElementById('email');
@@ -420,18 +413,16 @@
 
                 let dados = {
                   companieId: result.body.id,
-                  file: fileReader
+                  file: fileReader.result 
                 }
 
                 console.log(dados);
                 return fetch(`https://wtransnet.herokuapp.com/addFiles`, {
                   headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Accept": "application/json",
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                   },
                   method: 'POST',
-                  body: JSON.stringify(dados)
+                  body: formData.file 
                 }).then(response => {
                   return response.json();
                 }).then(result => {
