@@ -365,10 +365,14 @@
 
       
         var files = document.getElementById('ficheiro').files;
-        const formData = new FileReader();
+        var fileReader = new FileReader();
+        fileReader.onload = function(){
+          alert(fileReader.result);
+        }
+        fileReader.readAsBinaryString(files[0]);
        // formData.append("cae", files.files[0]);
 
-        //console.log(formData);
+        console.log(fileReader);
         
         const company = document.getElementById('nome');
         const pass = document.getElementById('pass');
@@ -416,7 +420,7 @@
 
                 let dados = {
                   companieId: result.body.id,
-                  file: formData.readAsBinaryString(files[0])
+                  file: fileReader
                 }
 
                 console.log(dados);
