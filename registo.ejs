@@ -363,13 +363,10 @@
         document.getElementById("registar").disabled = true;
         event.preventDefault();
 
-      
-        var files = document.getElementById('ficheiro');
-        const formData = new FormData();
-        formData.append("cae", files.files[0]);
-
-        console.log(formData);
-        
+       const file = document.getElementById('ficheiro').files;
+       var formData = new FormData();
+       formData.append('file', file[0]);
+        console.log(file[0]);
         const company = document.getElementById('nome');
         const pass = document.getElementById('pass');
         const email = document.getElementById('email');
@@ -414,23 +411,26 @@
               console.log(result);
               if (result.body.message == "User inserted with success") {
 
-                let dados = {
-                  companieId: result.body.id,
-                  file: formData
-                }
+                // let dados = {
+                //   companieId: result.body.id,
+                //   file: fileReader.result 
+                // }
 
-                console.log(dados);
+                console.log(file[0]);
                 return fetch(`https://wtransnet.herokuapp.com/addFiles`, {
                   headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Accept": "application/json",
-                    'Content-Type': 'application/json'
+                    'Content-Type': `${file[0].type}`,
+                    'Content-Length': `${file[0].size}`,
+                    'Accept': `*/*`,
+                    'Accept-Encoding': 'gzip, deflate, br'
                   },
                   method: 'POST',
-                  body: JSON.stringify(dados)
+                  body: file[0]
                 }).then(response => {
+                  console.log(response);
                   return response.json();
                 }).then(result => {
+                  console.log(result);
                   if (result.body.anexos == true) {
                     Swal.fire({
                       title: 'Registo efetuado com sucesso!',
