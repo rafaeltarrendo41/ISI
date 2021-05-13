@@ -224,6 +224,8 @@ color: white;
 <body>
 
  
+
+ 
    
 <!-- Load font awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -254,45 +256,13 @@ color: white;
     </div> <br>
 
     <p align='center'>	  
-        <table width='100%' bgcolor="white">
+        <table id="tabel1" width='100%' bgcolor="white">
             <tr>
             <th>Utilizadores</th>
             <th>Documentos</th>
+            <th>Tipo de Empresa</th>
             <th>Validar</th>
-            </tr>  
-            <tr>
-            <td>Tranfesa</td>
-            <td>
-              <!--falta pôr o <a href=" " download> -->
-              <button class="button2"><i class="fa fa-download"></i>Visualizar CAE</button></td>
-            
-            <td>
-              <button type="submit" class="btn1"> Validar </button>
-              <button type="submit" class="btn2"> Eliminar </button>
-            </td>
-            </tr>
-            <tr>
-            <td>Transped</td>
-            <td>
-              <!--falta pôr o <a href=" " download> -->
-              <button class="button2"><i class="fa fa-download"></i>Visualizar CAE</button></td>
-              <td>
-                <button type="submit" class="btn1"> Validar </button>
-                <button type="submit" class="btn2"> Eliminar </button>
-              </td>
-                
-             </tr>
-             <tr>
-              <td>Vicarli</td>
-              <td>
-                <!--falta pôr o <a href=" " download> -->
-                <button class="button2"><i class="fa fa-download"></i>Visualizar CAE</button></td>
-                <td>
-                  <button type="submit" class="btn1"> Validar </button>
-                  <button type="submit" class="btn2"> Eliminar </button></td>
-              </tr>
-            
-            
+            </tr>    
         </table>	
         </p>
 </div>
@@ -319,6 +289,47 @@ color: white;
 				</div>
 	</div>
   <body style="height:200%; width:100%;"></body>
-      
+ 
+ <script>
 
+   window.onload = () => {
+
+   function adicionarlinha(idTabela){
+     var tavela = document.getElementById(idTabela);
+     var numerolinhas = tabela.rows.length;
+     var linha = tabela.insertRow(numerolinhas);
+     var celula1 = linha.insertCell(0);
+     var celula2 = linha.insertCell(1);
+     var celula3 = linha.insertCell(2);
+     var celula4 = linha.insertCell(3);
+     celula1.innerHTML = 'idCompanie'
+     celula2.innerHTML = "url"
+     celula3.innerHTML = "type"
+     celula4.innerHTML = "<button onclick='validarCompanie(this)'>Validar</button>";
+     celula4.innerHTML = "<button onclick='removeLinha(this)'>Eliminar</button>";
+   }
+   //função remover linha
+
+   function removeLinha(linha){
+     var i= linha.parentNode.parentNode.rowIndex;
+     document.getElementById('tabela1').deleteRow(i);
+
+   }
+
+   console.log(properties);
+   return fetch ('https://wtransnet.herokuapp.com/precisaValidar', {
+     headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+          },
+          method: 'GET',
+   }).then(response => {
+     return response.json();
+   }).then(result => {
+     
+  }
+
+
+  </script>
 </body>
