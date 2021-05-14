@@ -384,6 +384,14 @@ td, th {
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
     window.onload = () => {
+
+      fetch(`https://wtransnet.herokuapp.com/getCargas`)
+        .then(res => res.json())
+        .then((out) => {
+          console.log(out);
+        })
+
+
       const aa = localStorage.getItem('companyID');
       console.log(aa);
       const form = document.getElementById('formTransporte');
