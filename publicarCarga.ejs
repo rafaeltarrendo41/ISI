@@ -101,6 +101,12 @@
 
     }
 
+    main .transporte h2{
+      font-weight: 600;
+            font-size: 30px;
+            margin-top: 7%;
+    }
+
     main form button {
       background-color: #fff;
       width: 200px;
@@ -112,7 +118,7 @@
       font-size: 1.1em;
       font-weight: 600;
       cursor: pointer;
-      margin-left: 5%;
+      margin-left: 4%;
 
       color: #000;
     }
@@ -266,7 +272,53 @@
     .rdp:visited {
       text-decoration: none;
       color: white;
+    } 
+    
+     main .transporte{
+      margin-left: 4%;
+         margin-top: 5%;   
+         width: 200%;
+         height: 70vh;
+         background-color: #DCDCDC;
+          display: flex;
+         flex-direction: column;
+         align-items: center;
+         border-radius: 18px;
+         margin-right: 2%;
+
+
     }
+    main .transporte .atualiza .btn8{
+
+      background-color: #fff;
+      width: 150px;
+      height: 30px;
+      border: 0;
+      outline: 0;
+      border-radius: 12px;
+      margin-top: 3%;
+      margin-right: 0%;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      
+
+      color: #000;
+
+    }
+
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
   </style>
 </head>
 
@@ -323,6 +375,24 @@
       </div>
 
     </form>
+    <br> <br> <br>
+
+    <div class= "transporte">
+      <div class="atualiza">
+      <button type="button" id="refresh" class="btn8">Atualizar</button>
+    </div>
+      <h2>Lista de Cargas</h2>
+      
+        <table id="tabel1" width='100%' bgcolor="white">
+            <tr>
+            <th>Utilizadores</th>
+            <th>Documentos</th>
+            <th>Tipo de Empresa</th>
+            <th>Validar</th>
+            </tr>    
+        </table>	
+        
+      </div>
 
   </main>
 
