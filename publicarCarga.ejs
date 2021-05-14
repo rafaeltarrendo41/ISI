@@ -101,10 +101,10 @@
 
     }
 
-    main .transporte h2{
+    main .transporte h2 {
       font-weight: 600;
-            font-size: 30px;
-            margin-top: 7%;
+      font-size: 30px;
+      margin-top: 7%;
     }
 
     main form button {
@@ -272,23 +272,24 @@
     .rdp:visited {
       text-decoration: none;
       color: white;
-    } 
-    
-     main .transporte{
+    }
+
+    main .transporte {
       margin-left: 4%;
-         margin-top: 5%;   
-         width: 200%;
-         height: 70vh;
-         background-color: #DCDCDC;
-          display: flex;
-         flex-direction: column;
-         align-items: center;
-         border-radius: 18px;
-         margin-right: 2%;
+      margin-top: 5%;
+      width: 200%;
+      height: 70vh;
+      background-color: #DCDCDC;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 18px;
+      margin-right: 2%;
 
 
     }
-    main .transporte .atualiza .btn8{
+
+    main .transporte .atualiza .btn8 {
 
       background-color: #fff;
       width: 150px;
@@ -301,24 +302,24 @@
       font-size: 1.1em;
       font-weight: 600;
       cursor: pointer;
-      
+
 
       color: #000;
 
     }
 
-  table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 90%;
-}
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 90%;
+    }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
   </style>
 </head>
 
@@ -377,22 +378,22 @@ td, th {
     </form>
     <br> <br> <br>
 
-    <div class= "transporte">
+    <div class="transporte">
       <div class="atualiza">
-      <button type="button" id="refresh" class="btn8">Atualizar</button>
-    </div>
-      <h2>Lista de Cargas</h2>
-      
-        <table id="tabel1" width='100%' bgcolor="white">
-            <tr>
-            <th>Utilizadores</th>
-            <th>Documentos</th>
-            <th>Tipo de Empresa</th>
-            <th>Validar</th>
-            </tr>    
-        </table>	
-        
+        <button type="button" id="refresh" class="btn8">Atualizar</button>
       </div>
+      <h2>Lista de Cargas</h2>
+
+      <table id="tabel1" width='100%' bgcolor="white">
+        <tr>
+          <th>Utilizadores</th>
+          <th>Documentos</th>
+          <th>Tipo de Empresa</th>
+          <th>Validar</th>
+        </tr>
+      </table>
+
+    </div>
 
   </main>
 
@@ -420,6 +421,19 @@ td, th {
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script>
     window.onload = () => {
+
+      fetch(`https://wtransnet.herokuapp.com/getTransportes`)
+        .then(res => res.json())
+        .then((out) => {
+          console.log(out);
+        })
+
+
+
+
+
+
+
       const aa = localStorage.getItem('companyID');
       console.log(aa);
       const form = document.getElementById('formCarga');
@@ -437,7 +451,7 @@ td, th {
           user_id: aa,
           origem: origem.value,
           destino: destino.value,
-          especialidade:especialidade.value,
+          especialidade: especialidade.value,
           peso: peso.value
         }
 
@@ -450,13 +464,13 @@ td, th {
           },
           method: 'POST',
           body: JSON.stringify(properties)
-      
+
         }).then(response => {
           return response.json();
         }).then(result => {
-          if(result.message == "criado"){
+          if (result.message == "criado") {
             Swal.fire('Carga criada com sucesso')
-          }else if(result.message == "erro ao adicionar produto"){
+          } else if (result.message == "erro ao adicionar produto") {
             Swal.fire('Erro ao criar a carga')
           }
           Swal.fire(result);

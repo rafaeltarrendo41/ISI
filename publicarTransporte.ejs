@@ -398,12 +398,15 @@ td, th {
         const peso = document.getElementById("kg");
 
         let properties = {
-          itemKey: especialidade.value,
-          description: peso.value
+          user_id: aa,
+          origem: origem.value,
+          destino: destino.value,
+          especialidade:especialidade.value,
+          peso: peso.value
         }
 
         console.log(properties);
-        return fetch(`https://wtransnet.herokuapp.com/insertProductJASMIN`, {
+        return fetch(`https://wtransnet.herokuapp.com/insertProductMoloni`, {
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Accept": "application/json",
@@ -415,12 +418,13 @@ td, th {
         }).then(response => {
           return response.json();
         }).then(result => {
-          if(result.message == "criado"){
+          if(result.result == "criado"){
             Swal.fire('Carga criada com sucesso')
-          }else if(result.message == "erro ao adicionar produto"){
-            Swal.fire('Erro ao criar o trensporte')
+          }else if(result.result == "erro moloni"){
+            Swal.fire('Erro ao adicionar o transporte');
+          } else if(result.result == "erro bd"){
+            Swal.fire('Erro ao adicionar o transporte')
           }
-          Swal.fire(result);
         }).catch(error => {
           document.getElementById("btn-submeter").disabled = false;
           Swal.fire({
