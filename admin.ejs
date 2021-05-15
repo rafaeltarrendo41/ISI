@@ -318,7 +318,8 @@
         const empresas = await response.json();
         const e = empresas.body;
 
-        console.log(empresas.lenght);
+        console.log(e.lenght);
+        console.log(e.lenght());
 
         for (let i = 0; i < empresas.lenght; i++) {
           strHtml += `
