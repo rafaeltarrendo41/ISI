@@ -309,7 +309,6 @@
           <th>Utilizadores</th>
           <th>Documentos</th>
           <th>Tipo de Empresa</th>
-          <th>Validar</th>
         </tr>
         </thead>
         <tbody>
@@ -317,20 +316,18 @@
         const response = await fetch(`https://wtransnet.herokuapp.com/precisaValidar`);
         const empresas = await response.json();
         const e = empresas.body;
+        const tamanho = Object.keys(empresas);
+        console.log(tamanho);
+        console.log(tamanho.length);
 
-        console.log(empresas);
-
-        for (let i = o; i < e.lenght; i++) {
+        for (let i = 0; i < tamanho.lenght; i++) {
           strHtml += `
         <tr>
            
             <td class='text-center'>${e[i].idCompanie}</td>
             <td class='text-center'>${e[i].url}</td>
             <td class='text-center'>${e[i].type}</td>
-            <td class='text-center'>
-            <i id='${e[i].idCompanie}' title="Validar" class='aceitar' style='color:white'></i> 
-            <i id='${e[i].idCompanie}' title="Recusar" class='recusar' style='color:white'></i>
-        </td>
+        
         </tr>
     `
         }
