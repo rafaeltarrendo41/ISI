@@ -317,8 +317,6 @@
         const empresas = await response.json();
         const e = empresas.body;
         const tamanho = Object.keys(empresas);
-        console.log(tamanho);
-        console.log(tamanho.length);
 
         for (let i = 0; i < tamanho.lenght; i++) {
           console.log(e[i].idCompanie);
