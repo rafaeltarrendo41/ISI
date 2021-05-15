@@ -66,4 +66,14 @@ app.get("/transporte", (request, response) => {
     });
 })
 
+app.get("/admin", (request, response) => {
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/admin`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
+
+
+
 app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));
