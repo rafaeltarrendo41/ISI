@@ -382,7 +382,7 @@
       <div class="atualiza">
         <button type="button" id="refresh" class="btn8">Atualizar</button>
       </div>
-      <h2>Lista de Cargas</h2>
+      <h2>Lista de Transportes</h2>
 
       <table id="tabel1" width='100%' bgcolor="white">
         <!-- <tr>
@@ -448,7 +448,7 @@ let strHtml = `
         const response = await fetch(`https://wtransnet.herokuapp.com/getTransportes`)
         const gestores = await response.json()
         const g = gestores.body;
-        console.log(g.length);
+        console.log(g);
         let i = 1
         for (let i = 0; i < g.length; i++) {
 
