@@ -300,6 +300,7 @@
   <script>
 
     window.onload = () => {
+      const tblValidar = document.getElementById("tabel1");
 
       const renderValidacao = async () => {
         let strHtml = `
@@ -313,14 +314,14 @@
         </thead>
         <tbody>
     `
-          const response = await fetch(`https://wtransnet.herokuapp.com/precisaValidar`);
-          const empresas = await response.json();
-          const e = empresas.body;
+        const response = await fetch(`https://wtransnet.herokuapp.com/precisaValidar`);
+        const empresas = await response.json();
+        const e = empresas.body;
 
-          console.log(empresas);
+        console.log(empresas);
 
-          for(let i=o; i<e.lenght; i++){
-            strHtml += `
+        for (let i = o; i < e.lenght; i++) {
+          strHtml += `
         <tr>
            
             <td class='text-center'>${e[i].idCompanie}</td>
@@ -332,7 +333,9 @@
         </td>
         </tr>
     `
-          }
+        }
+        strHtml += "</tbody>"
+        tblValidar.innerHTML = strHtml
       }
 
       renderValidacao();
