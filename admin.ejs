@@ -317,11 +317,11 @@
         const response = await fetch(`https://wtransnet.herokuapp.com/precisaValidar`);
         const empresas = await response.json();
         const e = empresas.body;
+        const tamanho = Object.keys(e);
+        console.log(tamanho);
+        console.log(tamanho.length);
 
-        console.log(e.lenght);
-        console.log(e.lenght());
-
-        for (let i = 0; i < empresas.lenght; i++) {
+        for (let i = 0; i < tamanho.lenght; i++) {
           strHtml += `
         <tr>
            
