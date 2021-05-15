@@ -318,15 +318,15 @@
         const empresas = await response.json();
         const e = empresas.body;
 
-        console.log(empresas);
+        console.log(empresas.lenght);
 
-        for (let i = 0; i < e.lenght; i++) {
+        for (let i = 0; i < empresas.lenght; i++) {
           strHtml += `
         <tr>
            
-            <td class='text-center'>${e[i].idCompanie}</td>
-            <td class='text-center'>${e[i].url}</td>
-            <td class='text-center'>${e[i].type}</td>
+            <td class='text-center'>${empresas[i].idCompanie}</td>
+            <td class='text-center'>${empresas[i].url}</td>
+            <td class='text-center'>${empresas[i].type}</td>
             <td class='text-center'>
             <i id='${e[i].idCompanie}' title="Validar" class='aceitar' style='color:white'></i> 
             <i id='${e[i].idCompanie}' title="Recusar" class='recusar' style='color:white'></i>
