@@ -309,7 +309,7 @@
           <input type="file" id="ficheiro" name="lname" placeholder="CAE">
         </div>
         <br>
-        <div class = "g-recaptcha" data-sitekey="6LfrLcYaAAAAABWpvKqmrb8ZwAPQXuA-PyZbZKxQ"></div>
+        <div class="g-recaptcha" data-sitekey="6LfrLcYaAAAAABWpvKqmrb8ZwAPQXuA-PyZbZKxQ"></div>
       </section>
 
       <div>
@@ -365,9 +365,9 @@
         document.getElementById("registar").disabled = true;
         event.preventDefault();
 
-       const file = document.getElementById('ficheiro').files;
-       var formData = new FormData();
-       formData.append('file', file[0]);
+        const file = document.getElementById('ficheiro').files;
+        var formData = new FormData();
+        formData.append('file', file[0]);
         console.log(file[0]);
         const company = document.getElementById('nome');
         const pass = document.getElementById('pass');
@@ -375,7 +375,7 @@
         const intlphone = document.getElementById('telefone');
         const nif = document.getElementById('nif');
         const tipo = document.getElementById('tipo');
-     
+
 
         return fetch(
           `https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
@@ -421,10 +421,9 @@
                 console.log(file[0]);
                 return fetch(`https://wtransnet.herokuapp.com/addFiles`, {
                   headers: {
-                    'Content-Type': `${file[0].type}`,
-                    'Content-Length': `${file[0].size}`,
-                    'Accept': `*/*`,
-                    'Accept-Encoding': 'gzip, deflate, br'
+                    "Access-Control-Allow-Origin": "*",
+                    "Accept": "application/json",
+                    'Content-Type': 'application/json'
                   },
                   method: 'POST',
                   body: formData
