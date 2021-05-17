@@ -450,56 +450,6 @@
         strHtml += "</tbody>"
         tblGestores.innerHTML = strHtml
 
-        // //eliminar
-        // const btnDelete = document.getElementsByClassName("eliminar")
-        // for (let i = 0; i < btnDelete.length; i++) {
-        //   btnDelete[i].addEventListener("click", () => {
-        //     swal({
-        //       title: 'Tem a certeza que pretende eliminar este gestor?',
-        //       type: 'warning',
-        //       showCancelButton: true,
-        //       confirmButtonColor: '#086A87',
-        //       cancelButtonColor: '#7e7e7e',
-        //       cancelButtonText: 'Não',
-        //       confirmButtonText: 'Sim'
-        //     }).then(async (result) => {
-        //       if (result.value) {
-        //         let gestorID = btnDelete[i].getAttribute("id")
-        //         try {
-        //           const response = await fetch(`http://localhost:5050/deleteUser/${gestorID}`, {
-        //             method: "DELETE"
-        //           })
-        //           swal({ type: 'success', title: 'Gestor removido', text: 'Ação concluída com sucesso' })
-        //           renderGestores()
-        //           console.log("antes catch")
-        //         } catch (err) {
-        //           console.log("catch")
-        //           swal({ type: 'error', title: 'Remoção de Gestor', text: err })
-        //         }
-
-        //       }
-        //     })
-        //   })
-        // }
-
-        // const btnEdit = document.getElementsByClassName("editar")
-        // for (let i = 0; i < btnEdit.length; i++) {
-        //   btnEdit[i].addEventListener("click", () => {
-        //     console.log("aa")
-        //     for (const gestor of g) {
-        //       if (gestor.id == btnEdit[i].getAttribute("id")) {
-        //         document.getElementById("id").value = gestor.id
-        //         document.getElementById("name").value = gestor.name
-        //         document.getElementById("email").value = gestor.email
-        //         document.getElementById("phone").value = gestor.phone
-        //         document.getElementById("nif").value = gestor.c5fb458f14b5ac7bdcb561f3120306cd18eb31f4
-
-        //       }
-        //     }
-        //   })
-        // }
-
-
 
       }
       renderGestores();
