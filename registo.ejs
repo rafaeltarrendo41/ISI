@@ -418,7 +418,7 @@
                 //   file: fileReader.result 
                 // }
 
-                console.log(formData.file);
+                console.log(formData.get('file'));
                 return fetch(`https://wtransnet.herokuapp.com/addFiles`, {
                   headers: {
                     "Access-Control-Allow-Origin": "*",
