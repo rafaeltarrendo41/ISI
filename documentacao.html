@@ -325,7 +325,42 @@ color: white;
 © Copyright 2012 - 2020 Josimar Junior Evangelista Criste - Todos os direitos reservados.
 				</div>
 	</div>
+ 
+ 
+  <!--fetch--> 
+  <script>
+  
+ console.log(properties);
+        return fetch(`https://wtransnet.herokuapp.com/insertProductJASMIN`, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify(properties)
       
+        }).then(response => {
+          return response.json();
+        }).then(result => {
+          if(result.message == "criado"){
+            Swal.fire('Carga criada com sucesso')
+          }else if(result.message == "erro ao adicionar produto"){
+            Swal.fire('Erro ao criar a carga')
+          }
+          Swal.fire(result);
+        }).catch(error => {
+          document.getElementById("btn-submeter").disabled = false;
+          Swal.fire({
+            html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
+            showCancelButton: false,
+            showConfirmButton: false,
+            type: 'error',
+            timer: 2000
+          })
+        })
+    </script>
+
 
 </body>
 </html>
