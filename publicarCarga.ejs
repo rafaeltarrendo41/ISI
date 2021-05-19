@@ -382,16 +382,16 @@
       <div class="atualiza">
         <button type="button" id="refresh" class="btn8">Atualizar</button>
       </div>
-      <h2>Lista de Cargas</h2>
+      <h2>Lista de Transportes</h2>
 
       <table id="tabel1" width='100%' bgcolor="white">
-        <tr>
+        <!-- <tr>
           <th>Utilizadores</th>
           <th>Documentos</th>
           <th>Tipo de Empresa</th>
           <th>Validar</th>
-        </tr>
-      </table>
+        </tr> -->
+      </table> 
 
     </div>
 
@@ -422,13 +422,53 @@
   <script>
     window.onload = () => {
 
-      fetch(`https://wtransnet.herokuapp.com/getTransportes`)
-        .then(res => res.json())
-        .then((out) => {
-          console.log(out);
-        })
+      const atualizar = document.getElementById("refresh");
 
+      atualizar.addEventListener('click', async(event) => {
+        renderGestores();
+      })
 
+      const tblGestores = document.getElementById("tabel1");
+
+      const renderGestores = async () => {
+
+let strHtml = `
+<thead>
+  <tr>
+    <th>Origem</th>
+    <th>Destino</th>
+    <th>Especialidade</th>
+    <th>Ton</th>
+  </tr>
+
+</thead>
+<tbody>
+`
+
+        const response = await fetch(`https://wtransnet.herokuapp.com/getTransportes`)
+        const gestores = await response.json()
+        const g = gestores.body;
+        console.log(g);
+        let i = 1
+        for (let i = 0; i < g.length; i++) {
+
+strHtml += `
+<tr>
+
+<td class='text-center'>${g[i].origem}</td>
+<td class='text-center'>${g[i].destino}</td>
+<td class='text-center'>${g[i].especialidade}</td>
+<td class='text-center'>${g[i].peso}</td>
+
+</tr>
+`
+
+}
+strHtml += "</tbody>"
+tblGestores.innerHTML = strHtml
+      }
+
+      renderGestores();
 
 
 
