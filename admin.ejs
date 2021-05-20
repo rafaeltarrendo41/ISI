@@ -7,10 +7,44 @@
   <style>
     /* The navigation menu */
     .navbar {
-      overflow: hidden;
+      
       background-color: #02475e;
       display: flex;
       justify-content: center;
+    }
+
+    .navbar li ul li {
+      display: block;
+      width: 150px;
+
+    }
+
+    .navbar li {
+      position: relative;
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+
+    }
+
+    .navbar li ul {
+      position: absolute;
+      top: 25px;
+      left: 0;
+      background-color: #02475e;
+      display: none;
+      text-align: center;
+      padding: 0px 3px;
+
+    }
+
+    .navbar li:hover ul,
+    .navbar li.over ul {
+      display: block;
     }
 
     /* Navigation links */
@@ -261,6 +295,13 @@
     <a href="#contact">QAP</a>
     <a href="#contact">Empresa</a>
     <a href="#contact">Blog</a>
+    <li> <a href="#contact">Perfil</a>
+      <ul>
+        <li> <a href="documentacao.html">Documentação</a> </li>
+        <li> <a href="editarperfil.html">Perfil</a> </li>
+        <li> <a href="pagamentos.html">Pagamentos</a> </li>
+      </ul>
+    </li>
   </div>
 
   <main>
