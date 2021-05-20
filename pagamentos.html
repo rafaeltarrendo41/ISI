@@ -351,6 +351,9 @@
     window.onload = () => {
       const tblValidar = document.getElementById("tabel1");
 
+      const a = localStorage.getItem('companyID');
+      console.log(a);
+
       const renderValidacao = async () => {
         let strHtml = `
     <thead>
