@@ -7,7 +7,7 @@
   <style>
     /* The navigation menu */
     .navbar {
-      
+
       background-color: #02475e;
       display: flex;
       justify-content: center;
@@ -266,7 +266,7 @@
     }
 
     h2 {
-        font-size: 30px;
+      font-size: 30px;
     }
   </style>
 </head>
@@ -306,7 +306,7 @@
         <li> <a href="pagamentos.html">Pagamentos</a> </li>
       </ul>
     </li>
-    
+
   </div>
 
   <main>
@@ -366,12 +366,24 @@
         </thead>
         <tbody>
     `
-        const response = await fetch(`https://wtransnet.herokuapp.com/precisaValidar`);
+        const properties = {
+          idCompanie: "6096327605"
+        }
+        const response = await fetch(`http:/127.0.0.1:8080/pagamentos`, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Accept": "application/json",
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify(properties)
+        });
         const empresas = await response.json();
-        console.log(response)
-        if (empresas.rows == "nenhum") {
+
+        console.log(empresas);
+        if (empresas.length == 0) {
           Swal.fire({
-            title: 'Nenhum utilizar para ser aprovado',
+            title: 'Nenhum pagamento disponível',
             icon: 'success',
             //pe: 'success',
           })
@@ -380,12 +392,13 @@
           console.log(tamanho.length);
           let i = 1;
           for (let i = 0; i < tamanho.length; i++) {
+            
             strHtml += `
         <tr>
            
-            <td class='text-center'>${empresas[i].idCompanie}</td>
+            <td class='text-center'>${empresas[i].idCargas || empresas[i].idTransporte}</td>
             <td>
-            <input type="button"  onclick="window.open('https://app.hubspot.com/file-preview/19808415/file/${empresas[i].url}/');" value="Ver">
+            <input type="button"  class='dados' value="Dados">
             </td>
             <td class='text-center'>${empresas[i].type}</td>
             <td class='text-center'>
@@ -398,6 +411,20 @@
           }
           strHtml += "</tbody>"
           tblValidar.innerHTML = strHtml
+        }
+
+        //ver dados
+        const btnDados = document.getElementsByClassName("dados");
+        console.log(btnDados.length)
+        for(let i=0; i< btnDados.length; i++){
+          btnDados[i].addEventListener("click", () =>{
+            
+            Swal.fire({
+              title: 'Dados da operação:',
+              text: 'Origem:' + empresas[i].origem + '\n' + 'Destino:' + empresas[i].destino + '\n' + 'Especialidade:' + empresas[i].especialidade + '\n' + 'Ton:' + empresas[i].peso
+
+            })
+          })
         }
         //aceitar
         const btnAceitar = document.getElementsByClassName("aceitar");
@@ -461,77 +488,6 @@
                 } catch (err) {
                   Swal.fire({
                     title: 'Utilizador não validado',
-                    icon: 'error',
-                    type: 'success',
-                  })
-                  renderValidacao();
-                }
-              }
-            })
-          })
-        }
-
-        const btnRecusar = document.getElementsByClassName("recusar");
-        for (let i = 0; i < btnAceitar.length; i++) {
-          btnRecusar[i].addEventListener("click", () => {
-            Swal.fire({
-              title: "Tem a certeza que deseja recusar utilizador?",
-              // type: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#086A87',
-              cancelButtonColor: '#7e7e7e',
-              cancelButtonText: 'Não',
-              confirmButtonText: 'Sim'
-            }).then(async (result) => {
-              if (result.value) {
-                let idCompanie = btnRecusar[i].getAttribute("id");
-                const properties = {
-                  'idCompanie': idCompanie,
-                  'email': empresas[i].email
-                }
-                console.log(properties)
-                try {
-
-                  return fetch(`https://wtransnet.herokuapp.com/recusarCompanie`, {
-                    headers: {
-                      "Access-Control-Allow-Origin": "*",
-                      "Accept": "application/json",
-                      'Content-Type': 'application/json'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify(properties)
-
-                  }).then(response => {
-                    return response.json();
-                  }).then(result => {
-                    console.log(result)
-                    if (result.verificado) {
-                      Swal.fire({
-                        title: 'Utilizador notificado',
-                        icon: 'success',
-                        //type: 'success',
-                      })
-                      renderValidacao();
-                    } else {
-                      Swal.fire({
-                        title: 'Utilizador não notificado',
-                        icon: 'error',
-                        // type: 'success',
-                      })
-                      renderValidacao();
-                    }
-                  }).catch(error => {
-                    Swal.fire({
-                      html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
-                      showCancelButton: false,
-                      showConfirmButton: false,
-                      icon: 'error',
-                      timer: 2000
-                    })
-                  })
-                } catch (err) {
-                  Swal.fire({
-                    title: 'Y«Utilizador não notificado',
                     icon: 'error',
                     type: 'success',
                   })
