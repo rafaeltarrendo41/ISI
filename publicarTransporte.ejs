@@ -489,6 +489,7 @@
         }).then(response => {
           return response.json();
         }).then(result => {
+          console.log(result);
           if (result.result == "criado") {
             Swal.fire('Carga criada com sucesso')
           } else if (result.result == "erro moloni") {
