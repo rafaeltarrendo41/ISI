@@ -352,7 +352,7 @@
           <input type="number" id="kg" name="lname" placeholder="KG"> <br>
       </section>
       <div>
-        <button type="button" id="btn-submeter" class="btn1" > SUBMETER </button>
+        <button type="submit" id="btn-submeter" class="btn1" > SUBMETER </button>
       </div>
       </div>
 
@@ -364,19 +364,7 @@
       <h2>Lista de Cargas</h2>
 
       <table id="tabel1" width='100%' bgcolor="white">
-        <!-- <thead>
-          <tr>
-            <th>Utilizadores</th>
-            <th>Documentos</th>
-            <th>Tipo de Empresa</th>
-            <th>Validar</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-        </tbody> -->
+    
 
       </table>
 
@@ -458,8 +446,9 @@
       const aa = localStorage.getItem('companyID');
       console.log(aa);
       const form = document.getElementById('formTransporte');
-
+      console.log('a')
       form.addEventListener("submit", async (event) => {
+        console.log("aa")
         document.getElementById("btn-submeter").disabled = true;
         event.preventDefault();
 
