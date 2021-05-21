@@ -397,6 +397,10 @@
     window.onload = () => {
 
        const atualizar = document.getElementById("refresh");
+       const newFunction = async () => {
+            document.getElementById("formCarga").reset();
+         }
+
 
       atualizar.addEventListener('click', async(event) => {
         renderGestores();
@@ -481,6 +485,7 @@
           console.log(result);
           if (result.result == "criado") {
             Swal.fire('Carga criada com sucesso')
+            newFunction();
           } else if (result.result == "erro moloni") {
             Swal.fire('Erro ao adicionar o transporte');
           } else if (result.result == "erro bd") {

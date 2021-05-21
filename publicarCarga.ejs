@@ -392,7 +392,7 @@
           <th>Tipo de Empresa</th>
           <th>Validar</th>
         </tr> -->
-      </table> 
+      </table>
 
     </div>
 
@@ -424,8 +424,12 @@
     window.onload = () => {
 
       const atualizar = document.getElementById("refresh");
+      const newFunction = async () => {
+            document.getElementById("formCarga").reset();
+         }
 
-      atualizar.addEventListener('click', async(event) => {
+
+      atualizar.addEventListener('click', async (event) => {
         renderGestores();
       })
 
@@ -433,7 +437,7 @@
 
       const renderGestores = async () => {
 
-let strHtml = `
+        let strHtml = `
 <thead>
   <tr>
     <th>Origem</th>
@@ -453,7 +457,7 @@ let strHtml = `
         let i = 1
         for (let i = 0; i < g.length; i++) {
 
-strHtml += `
+          strHtml += `
 <tr>
 
 <td class='text-center'>${g[i].origem}</td>
@@ -464,16 +468,15 @@ strHtml += `
 </tr>
 `
 
-}
-strHtml += "</tbody>"
-tblGestores.innerHTML = strHtml
+        }
+        strHtml += "</tbody>"
+        tblGestores.innerHTML = strHtml
       }
 
       renderGestores();
 
 
-
-
+     
 
       const aa = localStorage.getItem('companyID');
       console.log(aa);
@@ -509,8 +512,10 @@ tblGestores.innerHTML = strHtml
         }).then(response => {
           return response.json();
         }).then(result => {
+          console.log(result);
           if (result.message == "criado") {
             Swal.fire('Carga criada com sucesso')
+            newFunction();
           } else if (result.message == "erro ao adicionar produto") {
             Swal.fire('Erro ao criar a carga')
           }
