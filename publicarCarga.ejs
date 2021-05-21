@@ -513,7 +513,7 @@
         }).then(response => {
           return response.json();
         }).then(result => {
-          console.log(result);
+          console.log(result.message);
           if (result.message == "criado") {
             Swal.fire('Carga criada com sucesso')
             newFunction();
