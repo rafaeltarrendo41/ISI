@@ -407,7 +407,7 @@
             <td>
               <input type="button" value="Pagar" class="pagar" id="paypal-button">
             </td> 
-            <td class='text-center' id="produto">${empresas[i].idCargas || empresas[i].idTransporte}</td>
+            <td class='text-center' id="produto">${empresas[i].idCompra}</td>
             <td>
             <input type="button"  class='dados' value="Dados">
             </td>
@@ -464,11 +464,10 @@
                   console.log(status)
                   if (details.status == "COMPLETED") {
                   
-                    const abc = document.getElementById("produto").value
-                    console.log(abc[i])
+                    
                    const properties = {
                       companie_id: a,
-                      compraID: abc[i]
+                      compraID: empresas[i].idCompra
                     }
                     console.log(properties);
                     return fetch(`https://wtransnet.herokuapp.com/pagar`, {
