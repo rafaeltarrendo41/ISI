@@ -3,14 +3,32 @@
 <head>
   <link href='https://fonts.googleapis.com/css?family=Montserrat|Staatliches&display=swap' rel='stylesheet' />
   <link href="./node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* The navigation menu */
-    .navbar {
+    ¨* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      text-decoration: none;
 
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+    }
+
+    .navbar {
+      overflow: hidden;
       background-color: #02475e;
       display: flex;
       justify-content: center;
-
+      position: sticky;
+      width: 100%;
     }
 
     .navbar li ul li {
@@ -58,7 +76,6 @@
       text-decoration: none;
       display: flex;
       justify-content: center;
-      text-align: left;
     }
 
 
@@ -79,18 +96,19 @@
 
     main {
       width: 100%;
-      min-height: 100vh;
+      min-height: 120vh;
       background: linear-gradient(#fff, #80EAFF);
       display: flex;
       justify-content: center;
+      flex-direction: column;
       box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.25);
     }
 
     main form {
-      margin-left: 4%;
+      margin-left: 35%;
       margin-top: 5%;
-      width: 35%;
-      height: 70vh;
+      width: 30%;
+      height: 70%;
       background-color: #DCDCDC;
       box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
       border-radius: 18px;
@@ -103,19 +121,16 @@
 
     main form button {
       background-color: #fff;
-      width: 200px;
-      ;
-      height: 40px;
+      width: 100%;
+      height: 30px;
       border: 0;
       outline: 0;
       border-radius: 12px;
       margin-top: 10%;
-      font-size: 1.1em;
+      font-size: 1.0em;
       font-weight: 600;
       cursor: pointer;
-      margin-left: 5%;
-
-
+      margin-left: 0;
       color: #000;
     }
 
@@ -129,9 +144,9 @@
     }
 
     main form .inputs-container input {
-      width: 450px;
+      width: 70%;
       height: 45px;
-      padding: 8px 15px;
+      padding: 8px 20px;
       border: 0;
       outline: 0;
       border-radius: 12px;
@@ -139,6 +154,7 @@
       color: #312e42;
       box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
       background-color: #fff;
+      align-items: center;
 
     }
 
@@ -170,16 +186,16 @@
     }
 
     main .transporte {
-      margin-left: 4%;
-      margin-top: 5%;
-      width: 100%;
-      height: 70vh;
+      margin-left: 28%;
+      margin-top: 4%;
+      width: 50%;
+      height: 75%;
       background-color: #DCDCDC;
       display: flex;
       flex-direction: column;
       align-items: center;
       border-radius: 18px;
-      margin-right: 2%;
+      margin-bottom: 4%;
 
 
     }
@@ -188,19 +204,23 @@
       font-weight: 600;
       font-size: 30px;
       margin-top: 7%;
+      width: 100%;
+      text-align: center;
     }
 
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
-      width: 90%;
+      width: 65%;
+      margin-bottom: 4%;
     }
 
     td,
     th {
       border: 1px solid #dddddd;
       text-align: center;
-      padding: 8px;
+
+      width: 3%;
     }
 
 
@@ -208,50 +228,35 @@
     #FIMfim {
 
       width: 100%;
-      margin-bottom: 0%;
-      min-width: 600px;
+
+
       color: white;
-      padding-bottom: 20px;
-      margin-left: -10px;
-      margin-right: -15px;
-      height: 260px;
-      position: absolute;
+      bottom: 0;
+
+      height: 200px;
+      position: relative;
       align-items: center;
       justify-content: center;
       display: flex;
-      padding-top: 30px;
+      padding-top: 20px;
+
       box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
       background-color: #222222;
     }
 
-    #col1 {
-      min-width: 120px;
-      padding-top: 0px;
-      top: 0px;
-      margin-bottom: 230px;
-      width: 250px;
-      padding-left: 20px;
-      padding-right: 20px;
-      height: 55px;
-      display: inline-block;
-      text-align: left;
-      line-height: 55px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
-      position: relative;
-    }
+
 
     #col2 {
       min-width: 160px;
       padding-top: 0px;
       top: 0px;
-      margin-top: -180px;
+      margin-top: -100px;
       width: 100px;
       padding-left: 0px;
       padding-right: 100px;
       height: 55px;
       display: inline-block;
-      text-align: left;
+      text-align: center;
       line-height: 55px;
       font-family: 'Montserrat', sans-serif;
       font-size: 10px;
@@ -262,7 +267,7 @@
       min-width: 120px;
       padding-top: 0px;
       top: 0px;
-      margin-top: -180px;
+      margin-top: -100px;
       width: 170px;
       padding-left: 5px;
       padding-right: 0px;
@@ -280,7 +285,7 @@
       min-width: 120px;
       padding-top: 0px;
       top: 0px;
-      margin-bottom: 50px;
+      margin-bottom: 5px;
       width: 180px;
       padding-left: 0px;
       padding-right: 20px;
@@ -298,6 +303,359 @@
     .rdp:visited {
       text-decoration: none;
       color: white;
+    }
+
+   .btn8 {
+
+      background-color: #fff;
+      width: 25%;
+      height: 30px;
+      border: 0;
+      outline: 0;
+      border-radius: 12px;
+      margin-top: 3%;
+      right: 0;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+     
+
+
+      color: #000;
+
+    }
+
+
+    @media screen and (max-width: 768px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+      main .transporte {
+        margin-left: 22%;
+        margin-top: 3%;
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+        ;
+      }
+
+
+
+      main form {
+        margin-top: 10%;
+        margin-left: 25%;
+
+        width: 50% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+      main .transporte {
+        margin-left: 22%;
+        margin-top: 3%;
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+        ;
+      }
+
+
+
+      main form {
+        margin-top: 10%;
+        margin-left: 25%;
+
+        width: 50% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 560px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+      main .transporte {
+        margin-left: 22%;
+        margin-top: 3%;
+        width: 60% !important;
+        height: 75%;
+        overflow: hidden;
+        ;
+      }
+
+
+
+      main form {
+        margin-top: 10%;
+        margin-left: 25%;
+
+        width: 50% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 414px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+      main .transporte {
+        margin-left: 22%;
+        margin-top: 3%;
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+        ;
+      }
+
+
+
+      main form {
+        margin-top: 10%;
+        margin-left: 25%;
+
+        width: 50% !important;
+        height: 75%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 15px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+
+    }
+
+    @media screen and (max-width: 375px) {
+
+      .navbar {
+        width: 85vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 85vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+      main .transporte {
+        margin-left: 22%;
+        margin-top: 3%;
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+
+      }
+
+
+
+      main form {
+        margin-top: 10%;
+        margin-left: 25%;
+
+        width: 50% !important;
+        height: 75%;
+        overflow: hidden;
+      }
+
+      .btn1 {
+        margin-bottom: 2%;
+
+      }
+
+      input {
+        width: 5%;
+        height: 15px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
     }
   </style>
 </head>
@@ -342,7 +700,7 @@
       <section class="inputs-container">
         <div class="titulo">
           <h2>Publicar Transporte</h2>
-        </div> <br>
+        </div>
 
         <div class="in">
           <input type="text" id="origem" name="fname" placeholder="Origem"> <br>
@@ -351,7 +709,7 @@
           <input type="number" id="kg" name="lname" placeholder="KG"> <br>
       </section>
       <div>
-        <button type="button" id="btn-submeter" class="btn1" > SUBMETER </button>
+        <button type="button" id="btn-submeter" class="btn1"> SUBMETER </button>
       </div>
       </div>
 
@@ -407,9 +765,9 @@
   <script>
     window.onload = () => {
 
-       const atualizar = document.getElementById("refresh");
+      const atualizar = document.getElementById("refresh");
 
-      atualizar.addEventListener('click', async(event) => {
+      atualizar.addEventListener('click', async (event) => {
         renderGestores();
       })
 
