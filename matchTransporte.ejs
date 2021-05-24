@@ -387,29 +387,7 @@
         <a href="#contact">Blog</a>
     </div>
     <main>
-        <form id="formLogin">
-            <section class="inputs-container">
-                <h1>Login</h1>
-                <input id="email" type="email" placeholder="example@gmail.com">
-                <div class="password-container">
-                    <input type="password" id="field-password" class="field-password" placeholder="*********">
 
-            </section>
-            <button type="submit" id="btn-login">Entrar</button>
-
-            <section class="links-container">
-                <span>Ou entre com :</span>
-
-                <aside>
-                    <a href=""><i class="fab fa-google google"></i></a>
-                    <a href=""><i class="fab fa-facebook facebook"></i></a>
-                    <a href=""><i class="fab fa-linkedin link"></i></a>
-
-                </aside>
-
-
-            </section>
-        </form>
     </main>
 
     <div id="FIMfim">
@@ -435,82 +413,46 @@
     <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script>
         window.onload = () => {
-            const form = document.getElementById('formLogin');
+            const queryString = window.location.search;
+            console.log(queryString);
 
-            form.addEventListener("submit", async (event) => {
-                document.getElementById("btn-login").disabled = true;
-                event.preventDefault();
+            const urlParams = new URLSearchParams(queryString);
 
-                const email = document.getElementById("email");
-                const pass = document.getElementById("field-password");
+            const idMatch = urlParams.get('idMatch')
+            console.log(idMatch);
+            const properties = {
+                'idmatching': idMatch
+            }
 
-                if(email.value == 'admin' && pass.value == 'admin'){
-                    location.replace('https://wtransnet-face.herokuapp.com/admin');
-                }
-
-                let properties = {
-                    email: email.value,
-                    pass: pass.value
-                }
-                console.log(properties);
-
-                return fetch(`https://wtransnet.herokuapp.com/login`, {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Accept": "application/json",
-                        'Content-Type': 'application/json'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify(properties)
-                }).then(response => {
-                    return response.json();
-                }).then(result => {
-                    console.log(result);
-                    if (result.verificado == true) {
-                        console.log('Aquiiiii')
-                        alert(result.tipo);
-                        if (result.tipo == "Transportadora") {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Login com sucesso',
-                                showConfirmButton: false,
-                                timer: 2000
-                            })
-                            localStorage.setItem('companyID', result.user_id);
-                            console.log(localStorage.getItem('companyID'));
-                            window.location.replace('/transporte');
-                        } else {
-                            console.log('cargaaaa')
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Login com sucesso',
-                                showConfirmButton: false,
-                                timer: 2000
-                            })
-                            localStorage.setItem('companyID', result.user_id);
-                            console.log(localStorage.getItem('companyID'));
-                            window.location.replace('/carga')
-                        }
-
-                    } else {
-                        if (result.message == "Utilizador não verificado") {
-                            Swal.fire('Utilizador não verificado');
-                        } else if (result.message == "Password Incorreta") {
-                            Swal.fire('Password Incorreta');
-                        } else if (result.message == "user not found") {
-                            Swal.fire('user not found');
-                        }
-                    }
-                }).catch(error => {
-                    document.getElementById("btn-login").disabled = false;
+            return fetch(`https://wtransnet.herokuapp.com/aceitarMatchTrans`, {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Accept": "application/json",
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(properties)
+            }).then(response => {
+                return response.json();
+            }).then(result => {
+                console.log(result);
+                if(result.message == 'match aceite por ambos'){
                     Swal.fire({
-                        html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
-                        showCancelButton: false,
-                        showConfirmButton: false,
-                        type: 'error',
-                        timer: 2000
+                        title: 'Match confirmado',
+                        text: 'Efetue o pagamento do nosso serviço prestado'
                     })
-                })
+                } else if (result.message == 'match aceite') {
+                    Swal.fire({
+                        title: 'Match confirmado',
+                        text: 'Aguarde a aprovação da outra parte'
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Match não confirmado',
+                        text: 'Tente novamente'
+                    })
+                }
+
             })
         }
     </script>

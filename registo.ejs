@@ -433,6 +433,7 @@
                   title: 'Registo Efetuado',
                   text: 'Aguarde a validação da sua conta, irá receber um email com a confirmação'
                 })
+                location.reload();
               } else{
                  Swal.fire({
                   title: 'Erro no registo',
@@ -441,21 +442,6 @@
               }
             })
           }
-          // if (result.body.anexos == true) {
-          //   Swal.fire({
-          //     title: 'Registo efetuado com sucesso!',
-          //     timer: 2000
-          //   }).then(result => {
-          //     window.location.replace('/register')
-          //   })
-          // } else {
-          //   Swal.fire({
-          //     title: 'Utilizador criado! Erro ao adicionar os documentos!',
-          //     timer: 2000
-          //   }).then(result => {
-          //     window.location.replace('/register')
-          //   })
-          // }
         })
 
           } else {

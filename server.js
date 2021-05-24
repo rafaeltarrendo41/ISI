@@ -74,6 +74,28 @@ app.get("/admin", (request, response) => {
     });
 })
 
+app.get("/pagamentos", (request, response) =>{
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/pagamentos`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
+
+app.get("/matchCarga", (request, response) =>{
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/matchCarga`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
+app.get("/matchTransporte", (request, response) =>{
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/matchTransporte`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
 
 
 app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));

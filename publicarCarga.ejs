@@ -695,8 +695,9 @@
     <a href="#contact">Blog</a>
     <li> <a href="#contact">Perfil</a>
       <ul>
-        <li> <a href="#contact">Documentação</a> </li>
-        <li> <a href="#contact">Perfil</a> </li>
+        <li> <a href="documentacao.html">Documentação</a> </li>
+        <li> <a href="editarperfil.html">Perfil</a> </li>
+        <li> <a href="https://wtransnet-face.herokuapp.com/pagamentos">Pagamentos</a> </li>
       </ul>
     </li>
 
@@ -777,7 +778,15 @@
     window.onload = () => {
 
       const atualizar = document.getElementById("refresh");
+      const newFunction = async () => {
+            document.getElementById("formCarga").reset();
+            console.log("limpa")
+         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6fc0435224c81e359faf362928923b3f1ef320ef
       atualizar.addEventListener('click', async (event) => {
         renderGestores();
       })
@@ -825,8 +834,7 @@
       renderGestores();
 
 
-
-
+     
 
       const aa = localStorage.getItem('companyID');
       console.log(aa);
@@ -862,8 +870,10 @@
         }).then(response => {
           return response.json();
         }).then(result => {
+          console.log(result.message);
           if (result.message == "criado") {
             Swal.fire('Carga criada com sucesso')
+            newFunction();
           } else if (result.message == "erro ao adicionar produto") {
             Swal.fire('Erro ao criar a carga')
           }

@@ -688,8 +688,9 @@
     <a href="#contact">Blog</a>
     <li> <a href="#contact">Perfil</a>
       <ul>
-        <li> <a href="#contact">Documentação</a> </li>
-        <li> <a href="#contact">Perfil</a> </li>
+        <li> <a href="documentacao.html">Documentação</a> </li>
+        <li> <a href="editarperfil.html">Perfil</a> </li>
+        <li> <a href="https://wtransnet-face.herokuapp.com/pagamentos">Pagamentos</a></li>
       </ul>
     </li>
 
@@ -709,7 +710,11 @@
           <input type="number" id="kg" name="lname" placeholder="KG"> <br>
       </section>
       <div>
+<<<<<<< HEAD
         <button type="button" id="btn-submeter" class="btn1"> SUBMETER </button>
+=======
+        <button type="submit" id="btn-submeter" class="btn1" > SUBMETER </button>
+>>>>>>> 6fc0435224c81e359faf362928923b3f1ef320ef
       </div>
       </div>
 
@@ -721,19 +726,7 @@
       <h2>Lista de Cargas</h2>
 
       <table id="tabel1" width='100%' bgcolor="white">
-        <!-- <thead>
-          <tr>
-            <th>Utilizadores</th>
-            <th>Documentos</th>
-            <th>Tipo de Empresa</th>
-            <th>Validar</th>
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-        </tbody> -->
+    
 
       </table>
 
@@ -765,7 +758,16 @@
   <script>
     window.onload = () => {
 
+<<<<<<< HEAD
       const atualizar = document.getElementById("refresh");
+=======
+       const atualizar = document.getElementById("refresh");
+       const newFunction = async () => {
+            document.getElementById("formTransporte").reset();
+            console.log("limpa")
+         }
+
+>>>>>>> 6fc0435224c81e359faf362928923b3f1ef320ef
 
       atualizar.addEventListener('click', async (event) => {
         renderGestores();
@@ -815,8 +817,9 @@
       const aa = localStorage.getItem('companyID');
       console.log(aa);
       const form = document.getElementById('formTransporte');
-
+      console.log('a')
       form.addEventListener("submit", async (event) => {
+        console.log("aa")
         document.getElementById("btn-submeter").disabled = true;
         event.preventDefault();
 
@@ -846,8 +849,10 @@
         }).then(response => {
           return response.json();
         }).then(result => {
+          console.log(result);
           if (result.result == "criado") {
             Swal.fire('Carga criada com sucesso')
+            newFunction();
           } else if (result.result == "erro moloni") {
             Swal.fire('Erro ao adicionar o transporte');
           } else if (result.result == "erro bd") {
