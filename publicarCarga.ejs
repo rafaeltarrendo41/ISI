@@ -866,14 +866,14 @@
         }).then(response => {
           return response.json();
         }).then(result => {
-          console.log(result);
-          if (result.result == "criado") {
+          console.log(result.message);
+          if (result.message == "criado") {
             Swal.fire('Carga criada com sucesso')
             newFunction();
-          } else if (result.result == "erro ao adicionar produto") {
+          } else if (result.message == "erro ao adicionar produto") {
             Swal.fire('Erro ao criar a carga')
           }
-          Swal.fire(result);
+         // Swal.fire(result);
         }).catch(error => {
           document.getElementById("btn-submeter").disabled = false;
           Swal.fire({
