@@ -97,5 +97,13 @@ app.get("/matchTransporte", (request, response) =>{
     });
 })
 
+app.get("/documentos", (request, response) =>{
+    response.set('Content-Type', 'text/html');
+    response.render(`${dirName}/documentacao`, {
+        urlBase: urlBase,
+        ver: version
+    });
+})
+
 
 app.listen(process.env.PORT, () => console.log(`Node server listening on port ${process.env.PORT}!`));
