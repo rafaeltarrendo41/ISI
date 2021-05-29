@@ -679,11 +679,12 @@ main{
                                 icon: 'success',
                                 title: 'Login com sucesso',
                                 showConfirmButton: false,
-                                timer: 5000,
-                            })
+                                
+                            }).then(function(){
                             localStorage.setItem('companyID', result.user_id);
                             console.log(localStorage.getItem('companyID'));
-                            window.location.replace('/transporte');
+                            window.location = "https://wtransnet-face.herokuapp.com/transporte";
+                            })
                         } else {
                             console.log('cargaaaa')
                             Swal.fire({
@@ -691,10 +692,11 @@ main{
                                 title: 'Login com sucesso',
                                 showConfirmButton: false,
                                 timer: 2000
-                            })
+                            }).then(function(){
                             localStorage.setItem('companyID', result.user_id);
                             console.log(localStorage.getItem('companyID'));
-                            window.location.replace('/carga')
+                            window.location = "https://wtransnet-face.herokuapp.com/carga";
+                            })
                         }
 
                     } else {
