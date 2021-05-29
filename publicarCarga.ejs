@@ -717,7 +717,7 @@
           <input type="text" id="origem" name="fname" placeholder="Origem"> <br>
           <input type="text" id="destino" name="lname" placeholder="Destino"> <br>
           <input type="text" id="especialidade" name="lname" placeholder="Especialidade"> <br>
-          <input type="number" id="kg" name="lname" placeholder="KG"> <br>
+          <input type="number" id="kg" name="lname" placeholder="Ton"> <br>
       </section>
       <div>
 
@@ -866,11 +866,11 @@
         }).then(response => {
           return response.json();
         }).then(result => {
-          console.log(result.message);
-          if (result.message == "criado") {
+          console.log(result);
+          if (result.result == "criado") {
             Swal.fire('Carga criada com sucesso')
             newFunction();
-          } else if (result.message == "erro ao adicionar produto") {
+          } else if (result.result == "erro ao adicionar produto") {
             Swal.fire('Erro ao criar a carga')
           }
           Swal.fire(result);
