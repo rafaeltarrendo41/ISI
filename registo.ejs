@@ -750,8 +750,9 @@
                         Swal.fire({
                           title: 'Registo Efetuado',
                           text: 'Aguarde a validação da sua conta, irá receber um email com a confirmação'
-                        })
-                        location.reload();
+                            
+                        }).then( location.reload());
+                       
                       } else {
                         Swal.fire({
                           title: 'Erro no registo',
