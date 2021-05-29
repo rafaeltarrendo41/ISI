@@ -611,7 +611,7 @@
         let strHtml = `
     <thead>
       <tr>
-          <th>Utilizadores</th>
+          <th>NIF</th>
           <th>Documentos</th>
           <th>Tipo de Empresa</th>
           <th>Validar</th>
@@ -636,7 +636,7 @@
             strHtml += `
         <tr>
            
-            <td class='text-center'>${empresas[i].idCompanie}</td>
+            <td class='text-center'>${empresas[i].nif}</td>
             <td>
             <input type="button"  onclick="window.open('https://app.hubspot.com/file-preview/19808415/file/${empresas[i].url}/');" value="Ver">
             </td>
