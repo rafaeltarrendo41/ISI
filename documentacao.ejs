@@ -24,7 +24,7 @@
     }
 
     .navbar {
-     
+
       background-color: #02475e;
       display: flex;
       justify-content: center;
@@ -585,7 +585,7 @@
 
   <!-- The navigation menu -->
   <div class="navbar">
-    <a href="#home">Home</a>
+    <a onclick="paginainicial()">Home</a>
     <a href="#About">Soluções</a>
     <a href="#contact">Porquê wtransnet?</a>
     <a href="#contact">Tarifas</a>
@@ -619,7 +619,7 @@
 
 
   </main>
-
+  
   <div id="FIMfim">
 
     <div id="col2">
@@ -642,6 +642,16 @@
 
   <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
+  <script type="text/javascript">
+    function paginainicial(){
+      if (localStorage.getItem('tipo') == "Transportadora") {
+        href ="https://wtransnet-face.herokuapp.com/transporte"
+      } else {
+        href ="https://wtransnet-face.herokuapp.com/carga"
+
+      }
+    }
+  </script>
 
   <!--fetch-->
   <script>

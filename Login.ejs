@@ -683,6 +683,7 @@ main{
                                 
                             }).then(function(){
                             localStorage.setItem('companyID', result.user_id);
+                            localStorage.setItem('tipo',result.tipo);
                             console.log(localStorage.getItem('companyID'));
                             window.location = "https://wtransnet-face.herokuapp.com/transporte";
                             })
