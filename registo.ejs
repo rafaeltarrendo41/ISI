@@ -146,7 +146,8 @@
       border: 0;
       outline: 0;
       border-radius: 12px;
-      margin-top: 10%;
+      margin-top: 5%;
+      margin-bottom: 2%;
       font-size: 1.1em;
       font-weight: 600;
       cursor: pointer;
@@ -372,7 +373,7 @@
       }
 
       body {
-        width:min-content;
+        width: 100%;
         min-height: 170vh;
       }
 
@@ -382,11 +383,7 @@
         padding: 14px 12px;
       }
 
-      main form .links-container aside i {
-        height: 30px;
-        width: 30px;
-        padding: 9px;
-      }
+     
 
       main {
         height: 80vh;
@@ -413,7 +410,7 @@
       }
 
       input {
-        height: 30px !important;
+        height: 15px !important;
         font-size: 15px !important;
       }
 
@@ -438,7 +435,7 @@
       }
 
       body {
-        width:min-content;
+        width:100%;
         min-height: 170vh;
       }
 
@@ -473,7 +470,7 @@
       }
 
       input {
-        height: 30px !important;
+        height: 15px !important;
         font-size: 15px !important;
       }
 
@@ -500,7 +497,7 @@
       }
 
       body {
-        width:min-content;
+        width: 100%;
         min-height: 170vh;
 
       }
@@ -535,7 +532,7 @@
 
 
       input {
-        height: 30px !important;
+        height: 15px !important;
         font-size: 15px !important;
       }
 
@@ -603,7 +600,7 @@
           <option>Transportadora</option>
           <option>Operador Logistico</option>
         </select>
-        <br> <br>
+        
         <div class=cae>
           <label>Documento CAE:</label>
           <input type="file" id="ficheiro" name="lname" placeholder="CAE">
@@ -677,7 +674,7 @@
 
 
         return fetch(
-          `https://www.nif.pt/?json=1&q=${nif.value}&key=8a6162e3c7d1b550c95968aec21eae7a`
+          `https://www.nif.pt/?json=1&q=${nif.value}&key=c98b56062471b6923a9f915cddc78720`
         ).then(response => {
           if (response.status == 200) {
             return response.json();
