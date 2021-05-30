@@ -778,32 +778,32 @@
                 }
               }
             }).catch(error => {
-              document.getElementById("registar").disabled = false;
-              if (error.body.message == 'CONTACT_EXISTS') {
-                Swal.fire({
-                  title: 'Este email já existe!',
-                  showCancelButton: false,
-                  showConfirmButton: false,
-                  type: 'error',
-                  timer: 2000
-                })
-              } else if (error.body.message == 'NIF_EXISTS') {
-                Swal.fire({
-                  title: 'Este NIF já existe!',
-                  showCancelButton: false,
-                  showConfirmButton: false,
-                  type: 'error',
-                  timer: 2000
-                })
-              } else {
-                Swal.fire({
-                  html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
-                  showCancelButton: false,
-                  showConfirmButton: false,
-                  type: 'error',
-                  timer: 2000
-                })
-              }
+              // document.getElementById("registar").disabled = false;
+              // if (error.body.message == 'CONTACT_EXISTS') {
+              //   Swal.fire({
+              //     title: 'Este email já existe!',
+              //     showCancelButton: false,
+              //     showConfirmButton: false,
+              //     type: 'error',
+              //     timer: 2000
+              //   })
+              // } else if (error.body.message == 'NIF_EXISTS') {
+              //   Swal.fire({
+              //     title: 'Este NIF já existe!',
+              //     showCancelButton: false,
+              //     showConfirmButton: false,
+              //     type: 'error',
+              //     timer: 2000
+              //   })
+              // } else {
+              //   Swal.fire({
+              //     html: '<strong><h3>Ocorreu um erro! Tente novamente mais tarde. Obrigado!</h3></strong>',
+              //     showCancelButton: false,
+              //     showConfirmButton: false,
+              //     type: 'error',
+              //     timer: 2000
+              //   })
+              // }
             });
           } else {
             throw new Error(
