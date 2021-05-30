@@ -710,7 +710,7 @@
             }).then(response => {
               return response.json();
             }).then(result => {
-              console.log(result.body.message);
+              console.log(result.body);
               if (result.body.message == "User inserted with success") {
 
                 let dados = {
