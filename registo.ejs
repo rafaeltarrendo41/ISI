@@ -781,7 +781,7 @@
               document.getElementById("registar").disabled = false;
               if (error.body.message == 'CONTACT_EXISTS') {
                 Swal.fire({
-                  html: '<strong><h3>O email que introduziu já existe. Utilize outro email!</h3></strong>',
+                  title: 'Este email já existe!',
                   showCancelButton: false,
                   showConfirmButton: false,
                   type: 'error',
