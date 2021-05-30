@@ -652,6 +652,7 @@
 
   <script type="text/javascript">
     function paginainicial(){
+      console.log(localStorage.getItem('tipo'))
       if (localStorage.getItem('tipo') == "Transportadora") {
         href ="https://wtransnet-face.herokuapp.com/transporte"
       } else {
