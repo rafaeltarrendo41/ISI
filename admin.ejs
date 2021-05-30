@@ -63,7 +63,7 @@
 
     .titulo {
       text-align: center;
-      margin-top: 10%
+      margin-top: 1%
     }
 
     main {
@@ -80,7 +80,7 @@
     }
 
     main .form {
-      margin-left: 4%;
+      margin-left: 25%;
       margin-top: 5%;
       width: 50%;
       height: 70%;
@@ -92,6 +92,47 @@
       flex-direction: column;
       align-items: center;
     }
+    main .form1 {
+      margin-left: 25%;
+      margin-top: 5%;
+      width: 50%;
+      height: 70%;
+      background-color: #DCDCDC;
+      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+      border-radius: 18px;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    main .form2 {
+      margin-left: 25%;
+      margin-top: 5%;
+      width: 50%;
+      height: 70%;
+      background-color: #DCDCDC;
+      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+      border-radius: 18px;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    main .form3 {
+      margin-left: 25%;
+      margin-top: 5%;
+      width: 50%;
+      height: 70%;
+      background-color: #DCDCDC;
+      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+      border-radius: 18px;
+      padding: 2%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2%;
+    }
+
 
     input {
       outline: none;
@@ -138,12 +179,40 @@
     .cae {
       text-align: left;
     }
+     tbody{
+      overflow-y:scroll ;
+    }
 
-    table {
+    .table1 {
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 65%;
       margin-bottom: 4%;
+      
+    }
+
+    .table2 {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 65%;
+      margin-bottom: 10%;
+      
+    }
+
+    .table3 {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 65%;
+      margin-bottom: 4%;
+      
+    }
+
+    .table4 {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 65%;
+      margin-bottom: 4%;
+      
     }
 
     td,
@@ -151,8 +220,13 @@
       border: 1px solid #dddddd;
       text-align: center;
 
-      width: 3%;
+      width: 2%;
     }
+   
+    tbody{
+      overflow-y:scroll ;
+    }
+   
 
     tr:nth-child(even) {
       background-color: #dddddd;
@@ -420,12 +494,12 @@
 
       body {
         width: 100%;
-        min-height: 100vh;
+        min-height: 400vh;
       }
 
 
       main {
-        height: 80vh;
+        height: 84vh;
         width: 84vh;
         margin: 0;
       }
@@ -438,6 +512,28 @@
 
       }
 
+      .table1{
+        width: 50%;
+        
+      }
+      .table2{
+        width: 1%;
+       
+
+      }
+      .table3{
+        width: 50%;
+        
+      }
+      .table4{
+        width: 50%;
+        
+      }
+     .table2 th,tr{
+        width: 1%;
+        font-size: 15px;
+        
+      }
 
 
 
@@ -445,9 +541,34 @@
       main .form {
         margin-top: 10%;
 
+        margin-left: 3%;
+        width: 90% !important;
+        height: 100%;
+        overflow: hidden;
+      }
 
-        width: 60% !important;
-        height: 70%;
+      main .form1 {
+        margin-top: 10%;
+        margin-left: 3%;
+
+        width: 90% !important;
+        height: 100%;
+        overflow: hidden;
+      }
+      main .form2 {
+        margin-top: 10%;
+
+        margin-left: 3%;
+        width: 90% !important;
+        height: 100%;
+        overflow: hidden;
+      }
+      main .form3 {
+        margin-top: 10%;
+        margin-left: 3%;
+
+        width: 90% !important;
+        height: 100%;
         overflow: hidden;
       }
 
@@ -570,49 +691,49 @@
     <div class="form">
       <div class="titulo">
         <h2>UTILIZADORES NÃO VALIDADOS</h2>
-      </div> <br>
+      </div> 
 
-      <p align='center'>
-      <table id="tabel1" width='100%' bgcolor="white">
+     
+      <table id="tabel1" width='65%' bgcolor="white">
 
       </table>
-      </p>
+      
     </div>
 
-    <div class="form">
+    <div class="form1">
       <div class="titulo">
         <h2>UTILIZADORES REGISTADOS</h2>
-      </div> <br>
+      </div> 
 
-      <p align='center'>
-      <table id="tabel2" width='100%' bgcolor="white">
+      
+      <table id="tabel2" width='65%' bgcolor="white">
 
       </table>
-      </p>
+     
     </div>
 
-    <div class="form">
+    <div class="form2">
       <div class="titulo">
         <h2>CARGAS REGISTADAS</h2>
-      </div> <br>
+      </div> 
 
-      <p align='center'>
-      <table id="tabel3" width='100%' bgcolor="white">
+     
+      <table id="tabel3" width='65%' bgcolor="white">
 
       </table>
-      </p>
+      
     </div>
 
-    <div class="form">
+    <div class="form3">
       <div class="titulo">
         <h2>TRANSPORTES REGISTADAS</h2>
-      </div> <br>
+      </div> 
 
-      <p align='center'>
-      <table id="tabel4" width='100%' bgcolor="white">
+     
+      <table id="tabel4" width='65%' bgcolor="white">
 
       </table>
-      </p>
+      
     </div>
 
   </main>
