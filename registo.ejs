@@ -814,9 +814,13 @@
               // }
             });
           } else {
-            throw new Error(
-              "O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!"
-            );
+            // throw new Error(
+            //   "O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!"
+            // );
+            Swal.fire({
+              title: 'Aconteceu um erro por favor tente mais tarde!CONNNNNNNNA',
+              icon: 'error'
+            })
           }
         }).catch(error => {
           Swal.fire({
