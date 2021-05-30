@@ -697,7 +697,7 @@ main{
                                 
                             }).then(function(){
                             localStorage.setItem('companyID', result.user_id);
-                            console.log(localStorage.getItem('companyID'));
+                            localStorage.setItem('tipo', result.tipo);
                             window.location = "https://wtransnet-face.herokuapp.com/carga";
                             })
                         }
