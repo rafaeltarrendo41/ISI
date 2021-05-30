@@ -4,9 +4,30 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat|Staatliches&display=swap' rel='stylesheet' />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
   <link href="./node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* The navigation menu */
+
+    /* The navigation menu */
+    ¨* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      text-decoration: none;
+
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+
+
+    }
     .navbar {
+    
 
       background-color: #02475e;
       display: flex;
@@ -81,18 +102,20 @@
 
     main {
       width: 100%;
-      min-height: 100vh;
+      min-height: 90vh;
       background: linear-gradient(#fff, #80EAFF);
       display: flex;
       justify-content: center;
       box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.25);
+      
+      flex-grow: 1;
     }
 
     main .form {
       margin-left: 4%;
       margin-top: 5%;
-      width: 35%;
-      height: 65vh;
+      width: 50%;
+      height: 70%;
       background-color: #DCDCDC;
       box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
       border-radius: 18px;
@@ -173,50 +196,33 @@
     #FIMfim {
 
       width: 100%;
-      margin-bottom: 0%;
-      min-width: 600px;
+
+
       color: white;
-      padding-bottom: 20px;
-      margin-left: -10px;
-      margin-right: -15px;
-      height: 260px;
-      position: absolute;
+      bottom: 0;
+
+      height: 200px;
+      position: relative;
       align-items: center;
       justify-content: center;
       display: flex;
-      padding-top: 30px;
+      padding-top: 20px;
+
       box-shadow: 0px 0 10px rgba(0, 0, 0, 0.8);
       background-color: #222222;
-    }
-
-    #col1 {
-      min-width: 120px;
-      padding-top: 0px;
-      top: 0px;
-      margin-bottom: 230px;
-      width: 250px;
-      padding-left: 20px;
-      padding-right: 20px;
-      height: 55px;
-      display: inline-block;
-      text-align: left;
-      line-height: 55px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
-      position: relative;
     }
 
     #col2 {
       min-width: 160px;
       padding-top: 0px;
       top: 0px;
-      margin-top: -180px;
+      margin-top: -100px;
       width: 100px;
       padding-left: 0px;
       padding-right: 100px;
       height: 55px;
       display: inline-block;
-      text-align: left;
+      text-align: center;
       line-height: 55px;
       font-family: 'Montserrat', sans-serif;
       font-size: 10px;
@@ -227,7 +233,7 @@
       min-width: 120px;
       padding-top: 0px;
       top: 0px;
-      margin-top: -180px;
+      margin-top: -100px;
       width: 170px;
       padding-left: 5px;
       padding-right: 0px;
@@ -245,7 +251,7 @@
       min-width: 120px;
       padding-top: 0px;
       top: 0px;
-      margin-bottom: 50px;
+      margin-bottom: 5px;
       width: 180px;
       padding-left: 0px;
       padding-right: 20px;
@@ -265,9 +271,323 @@
       color: white;
     }
 
-    h2 {
-      font-size: 30px;
+
+    @media screen and (max-width: 768px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+
+
+
+
+      main .form {
+        margin-top: 10%;
+
+
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+
+      table {
+        width: 100%;
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
     }
+
+    @media screen and (max-width: 640px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+      table {
+        width: 100%;
+      }
+
+
+
+
+      main .form {
+        margin-top: 10%;
+
+
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 560px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+
+      table {
+        width: 100%;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+
+
+
+      main .form {
+        margin-top: 10%;
+
+
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+    }
+
+    @media screen and (max-width: 414px) {
+      .navbar {
+        width: 84vh;
+
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 84vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+
+      table {
+        width: 100%;
+      }
+
+
+      main .form {
+        margin-top: 10%;
+
+
+        width: 60% !important;
+        height: 70%;
+        overflow: hidden;
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+
+    }
+
+    @media screen and (max-width: 375px) {
+
+      .navbar {
+        width: 85vh;
+
+      }
+
+
+      table {
+        width: 100%;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+
+      main {
+        height: 80vh;
+        width: 85vh;
+        margin: 0;
+      }
+
+      .navbar a {
+        width: 12%;
+        font-size: 10px;
+        padding: 14px 12px;
+
+
+      }
+
+
+
+
+      main .form {
+        margin-top: 10%;
+
+
+        width: 60% !important;
+        height: 75%;
+        overflow: hidden;
+      }
+
+      .btn1 {
+        margin-bottom: 2%;
+
+      }
+
+      input {
+        width: 5%;
+        height: 20px !important;
+        font-size: 15px !important;
+      }
+
+      #FIMfim {
+        width: 84vh;
+
+
+
+      }
+
+      .col2 {
+        width: 20px;
+        padding-right: 10px;
+      }
+    }
+
+  
   </style>
 </head>
 
