@@ -568,11 +568,23 @@
   <main>
     <div class="form">
       <div class="titulo">
-        <h2>UTILIZADORES REGISTADOS</h2>
+        <h2>UTILIZADORES NÃO VALIDADOS</h2>
       </div> <br>
 
       <p align='center'>
       <table id="tabel1" width='100%' bgcolor="white">
+
+      </table>
+      </p>
+    </div>
+
+    <div class="form">
+      <div class="titulo">
+        <h2>UTILIZADORES REGISTADOS</h2>
+      </div> <br>
+
+      <p align='center'>
+      <table id="tabel2" width='100%' bgcolor="white">
 
       </table>
       </p>
@@ -606,6 +618,7 @@
 
     window.onload = () => {
       const tblValidar = document.getElementById("tabel1");
+      const tblUtilizadores = document.getElementById("tabel2");
 
       const renderValidacao = async () => {
         let strHtml = `
@@ -796,6 +809,49 @@
         }
       }
       renderValidacao();
+      const renderUtilizadores = async () => {
+        let strHtml = `
+    <thead>
+      <tr>
+          <th>Número de Cliente</th>
+          <th>NIF</th>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+    `
+        const response = await fetch(`https://wtransnet.herokuapp.com/getCompanies`);
+        const empresas = await response.json();
+        console.log(response)
+        if (empresas.users.length == 0) {
+          Swal.fire({
+            title: 'Nenhuma empresa registada no sistema!',
+            icon: 'success',
+            //pe: 'success',
+          })
+        } else {
+          const tamanho = Object.keys(empresas.users);
+          console.log(tamanho.length);
+          let i = 1;
+          for (let i = 0; i < tamanho.length; i++) {
+            strHtml += `
+        <tr>
+            <td class='text-center'>${empresas.users[i].id}</td>
+            <td class='text-center'>${empresas.users[i].nif}</td>
+            <td class='text-center'>${empresas.users[i].name}</td>
+            <td class='text-center'>${empresas.users[i].email}</td>
+            <td class='text-center'>
+        </td>
+        
+        </tr>
+    `
+          }
+          strHtml += "</tbody>"
+          tblUtilizadores.innerHTML = strHtml
+        } 
+      }
+      renderUtilizadores();
     }
   </script>
 </body>
