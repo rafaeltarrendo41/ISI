@@ -280,9 +280,9 @@
       main form {
         top: 8%;
         margin-top: 1%;
-        
 
-        width: 70%  !important;
+
+        width: 70% !important;
         height: 90%;
         overflow: hidden;
       }
@@ -293,7 +293,7 @@
 
       }
 
-      
+
       #FIMfim {
         width: 84vh;
 
@@ -339,9 +339,9 @@
       main form {
         top: 8%;
         margin-top: 1%;
-        
 
-        width: 70%  !important;
+
+        width: 70% !important;
         height: 90%;
         overflow: hidden;
       }
@@ -351,7 +351,7 @@
         font-size: 15px !important;
       }
 
-      
+
       #FIMfim {
         width: 84vh;
 
@@ -404,18 +404,19 @@
       main form {
         top: 8%;
         margin-top: 1%;
-        
 
-        width: 70%  !important;
+
+        width: 70% !important;
         height: 80%;
         overflow: hidden;
       }
+
       input {
         height: 30px !important;
         font-size: 15px !important;
       }
 
-     
+
       #FIMfim {
         width: 84vh;
 
@@ -455,16 +456,16 @@
 
       }
 
-      
+
 
 
 
       main form {
         top: 8%;
         margin-top: 1%;
-        
 
-        width: 70%  !important;
+
+        width: 70% !important;
         height: 90%;
         overflow: hidden;
       }
@@ -474,7 +475,7 @@
         font-size: 15px !important;
       }
 
-      
+
       #FIMfim {
         width: 84vh;
 
@@ -522,9 +523,9 @@
       main form {
         top: 8%;
         margin-top: 1%;
-        
 
-        width: 70%  !important;
+
+        width: 70% !important;
         height: 90%;
         overflow: hidden;
       }
@@ -535,7 +536,7 @@
         font-size: 15px !important;
       }
 
-      
+
       #FIMfim {
         width: 84vh;
         height: 140px;
@@ -750,12 +751,12 @@
                         Swal.fire({
                           title: 'Registo Efetuado',
                           text: 'Aguarde a validação da sua conta, irá receber um email com a confirmação'
-                            
-                        }).then(function() {
+
+                        }).then(function () {
                           window.location = "https://wtransnet-face.herokuapp.com/login";
 
                         });
-                      
+
                       } else {
                         Swal.fire({
                           title: 'Erro no registo',
@@ -767,21 +768,21 @@
                 })
 
               } else {
-                if (result.body.error == "CONTACT_EXISTS") {
+                if (result.body.message == "CONTACT_EXISTS") {
                   Swal.fire({
-                          title: 'Email já existe',
-                          icon: 'error'
-                        })
-                } else if (result.body.error == "NIF_EXISTS") {
+                    title: 'Email já existe',
+                    icon: 'error'
+                  })
+                } else if (result.body.message == "NIF_EXISTS") {
                   Swal.fire({
-                          title: 'Nif já existe',
-                          icon: 'error'
-                        })
+                    title: 'Nif já existe',
+                    icon: 'error'
+                  })
                 } else {
                   Swal.fire({
-                          title: 'Aconteceu um erro por favor tente mais tarde!',
-                          icon: 'error'
-                        })
+                    title: 'Aconteceu um erro por favor tente mais tarde!',
+                    icon: 'error'
+                  })
                 }
               }
             }).catch(error => {
