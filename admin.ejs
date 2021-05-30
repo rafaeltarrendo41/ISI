@@ -590,6 +590,18 @@
       </p>
     </div>
 
+    <div class="form">
+      <div class="titulo">
+        <h2>CARGAS REGISTADAS</h2>
+      </div> <br>
+
+      <p align='center'>
+      <table id="tabel3" width='100%' bgcolor="white">
+
+      </table>
+      </p>
+    </div>
+
   </main>
 
   <div id="FIMfim">
@@ -619,6 +631,7 @@
     window.onload = () => {
       const tblValidar = document.getElementById("tabel1");
       const tblUtilizadores = document.getElementById("tabel2");
+      const tblCargas = document.getElementById("tabel3");
 
       const renderValidacao = async () => {
         let strHtml = `
@@ -849,6 +862,45 @@
           }
           strHtml += "</tbody>"
           tblUtilizadores.innerHTML = strHtml
+        } 
+      }
+      renderUtilizadores();
+      const renderCargas = async () => {
+        let strHtml = `
+    <thead>
+      <tr>
+          <th>Número de Cliente</th>
+          <th>NIF</th>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+    `
+        const response = await fetch(`https://wtransnet.herokuapp.com/getProductsJASMIN`);
+        const empresas = await response.json();
+        console.log(response)
+        if (empresas.cargas.length == 0) {
+          Swal.fire({
+            title: 'Nenhuma carga registada no sistema!',
+            icon: 'success',
+            //pe: 'success',
+          })
+        } else {
+          const tamanho = Object.keys(empresas.cargas);
+          console.log(tamanho.length);
+          let i = 1;
+          for (let i = 0; i < tamanho.length; i++) {
+            strHtml += `
+        <tr>
+            <td class='text-center'>${empresas.cargas[i].nome}</td>
+            <td class='text-center'>${empresas.cargas[i].dataCriacao}</td>
+        
+        </tr>
+    `
+          }
+          strHtml += "</tbody>"
+          tblCargas.innerHTML = strHtml
         } 
       }
       renderUtilizadores();
