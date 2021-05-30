@@ -831,7 +831,7 @@
             //pe: 'success',
           })
         } else {
-          const tamanho = Object.keys(empresas);
+          const tamanho = Object.keys(empresas.users);
           console.log(tamanho.length);
           let i = 1;
           for (let i = 0; i < tamanho.length; i++) {
@@ -839,7 +839,7 @@
         <tr>
             <td class='text-center'>${empresas.users[i].id}</td>
             <td class='text-center'>${empresas.users[i].nif}</td>
-            <td class='text-center'>${empresas.users[i].nome}</td>
+            <td class='text-center'>${empresas.users[i].name}</td>
             <td class='text-center'>${empresas.users[i].email}</td>
             <td class='text-center'>
         </td>
