@@ -75,6 +75,7 @@
       justify-content: center;
       box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.25);
       position: relative;
+      flex-direction: column;
       flex-grow: 1;
     }
 
@@ -602,6 +603,18 @@
       </p>
     </div>
 
+    <div class="form">
+      <div class="titulo">
+        <h2>TRANSPORTES REGISTADAS</h2>
+      </div> <br>
+
+      <p align='center'>
+      <table id="tabel4" width='100%' bgcolor="white">
+
+      </table>
+      </p>
+    </div>
+
   </main>
 
   <div id="FIMfim">
@@ -632,6 +645,7 @@
       const tblValidar = document.getElementById("tabel1");
       const tblUtilizadores = document.getElementById("tabel2");
       const tblCargas = document.getElementById("tabel3");
+      const tblTrans = document.getElementById("tabel4");
 
       const renderValidacao = async () => {
         let strHtml = `
@@ -902,6 +916,43 @@
         } 
       }
       renderCargas();
+      const renderTrans = async () => {
+        let strHtml = `
+    <thead>
+      <tr>
+          <th>Número de Carga</th>
+          <th>Data</th>
+        </tr>
+        </thead>
+        <tbody>
+    `
+        const response = await fetch(`https://wtransnet.herokuapp.com/getProductsMoloni`);
+        const empresas = await response.json();
+        console.log(response)
+        if (empresas.cargas.length == 0) {
+          Swal.fire({
+            title: 'Nenhuma carga registada no sistema!',
+            icon: 'success',
+            //pe: 'success',
+          })
+        } else {
+          const tamanho = Object.keys(empresas.cargas);
+          console.log(tamanho.length);
+          let i = 1;
+          for (let i = 0; i < tamanho.length; i++) {
+            strHtml += `
+        <tr>
+            <td class='text-center'>${empresas.cargas[i].name}</td>
+            <td class='text-center'>${empresas.cargas[i].dataCriacao}</td>
+        
+        </tr>
+    `
+          }
+          strHtml += "</tbody>"
+          tblTrans.innerHTML = strHtml
+        } 
+      }
+      renderTrans();
     }
   </script>
 </body>
