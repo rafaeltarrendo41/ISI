@@ -611,7 +611,7 @@
 
   <!-- The navigation menu -->
   <div class="navbar">
-    <a href="#home">Home</a>
+    <a  onclick="paginainicial()"> Home </a> 
     <a href="#About">Soluções</a>
     <a href="#contact">Porquê wtransnet?</a>
     <a href="#contact">Tarifas</a>
@@ -672,9 +672,20 @@
   <script
     src="https://www.paypal.com/sdk/js?client-id=Afb9JuzW5zzkUqaRixUdFhPk2GmW0nDCNrEnZso-_t88WT3J19pBl5aYQSy02-_afaOYlmNrQZgniqrH&disable-funding=credit,card&currency=EUR"></script>
 
+    <script type="text/javascript">
+      function paginainicial(){
+        console.log(localStorage.getItem('tipo'))
+        if (localStorage.getItem('tipo') == "Transportadora") {
+          window.location ="https://wtransnet-face.herokuapp.com/transporte"
+        } else {
+          window.location  ="https://wtransnet-face.herokuapp.com/carga"
   
+        }
+      }
+    </script>
 
   <script>
+    
 
     window.onload = () => {
       const tblValidar = document.getElementById("tabel1");
