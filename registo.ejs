@@ -768,13 +768,20 @@
 
               } else {
                 if (result.body.error == "CONTACT_EXISTS") {
-                  throw new Error(result.error);
+                  Swal.fire({
+                          title: 'Email já existe',
+                          icon: 'error'
+                        })
                 } else if (result.body.error == "NIF_EXISTS") {
-                  throw new Error(result.error);
+                  Swal.fire({
+                          title: 'Nif já existe',
+                          icon: 'error'
+                        })
                 } else {
-                  throw new Error(
-                    "Ocorreu um erro! Tente novamente mais tarde. Obrigado!"
-                  );
+                  Swal.fire({
+                          title: 'Aconteceu um erro por favor tente mais tarde!',
+                          icon: 'error'
+                        })
                 }
               }
             }).catch(error => {
