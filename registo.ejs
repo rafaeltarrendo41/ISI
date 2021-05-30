@@ -315,7 +315,8 @@
       }
 
       body {
-         width:100%;;
+        width: 100%;
+        ;
       }
 
       .navbar a {
@@ -406,7 +407,7 @@
 
         width: 70% !important;
         height: 90%;
-      
+
       }
 
       input {
@@ -435,7 +436,7 @@
       }
 
       body {
-        width:100%;
+        width: 100%;
         min-height: 170vh;
       }
 
@@ -706,7 +707,7 @@
             }).then(response => {
               return response.json();
             }).then(result => {
-              console.log(result.body.message);
+              console.log(result.body);
               if (result.body.message == "User inserted with success") {
 
                 let dados = {
@@ -767,24 +768,23 @@
                   }
                 })
 
+              } else if (result.body.message == "CONTACT_EXISTS") {
+                Swal.fire({
+                  title: 'Email já existe',
+                  icon: 'error'
+                })
+              } else if (result.body.message == "NIF_EXISTS") {
+                Swal.fire({
+                  title: 'Nif já existe',
+                  icon: 'error'
+                })
               } else {
-                if (result.body.message == "CONTACT_EXISTS") {
-                  Swal.fire({
-                    title: 'Email já existe',
-                    icon: 'error'
-                  })
-                } else if (result.body.message == "NIF_EXISTS") {
-                  Swal.fire({
-                    title: 'Nif já existe',
-                    icon: 'error'
-                  })
-                } else {
-                  Swal.fire({
-                    title: 'Aconteceu um erro por favor tente mais tarde!',
-                    icon: 'error'
-                  })
-                }
+                Swal.fire({
+                  title: 'Aconteceu um erro por favor tente mais tarde!',
+                  icon: 'error'
+                })
               }
+            
             }).catch(error => {
               // document.getElementById("registar").disabled = false;
               // if (error.body.message == 'CONTACT_EXISTS') {
@@ -813,25 +813,25 @@
               //   })
               // }
             });
-          } else {
-            // throw new Error(
-            //   "O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!"
-            // );
-            Swal.fire({
-              title: 'Aconteceu um erro por favor tente mais tarde!CONNNNNNNNA',
-              icon: 'error'
-            })
-          }
-        }).catch(error => {
-          Swal.fire({
-            html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
-            type: 'error',
-            showCloseButton: false,
-            showConfirmButton: false,
-            focusConfirm: false,
-            timer: 2000
-          })
+      } else {
+        // throw new Error(
+        //   "O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!"
+        // );
+        Swal.fire({
+          title: 'Aconteceu um erro por favor tente mais tarde!CONNNNNNNNA',
+          icon: 'error'
         })
+      }
+        }).catch (error => {
+      Swal.fire({
+        html: '<strong><h3>O NIF que introduziu não é válido. Verifique se introduziu o seu NIF corretamente!</h3></strong>',
+        type: 'error',
+        showCloseButton: false,
+        showConfirmButton: false,
+        focusConfirm: false,
+        timer: 2000
+      })
+    })
 
       })
 
