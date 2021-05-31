@@ -5,7 +5,7 @@
     "background_color": "#920000",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "/login",
+    "start_url": "https://wtransnet-face.herokuapp.com/login",
     "icons": [
         {
             "src": "icons/manifest-icon-192.png",
