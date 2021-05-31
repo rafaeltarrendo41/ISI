@@ -137,6 +137,13 @@
         font-size: 15px;
         position: relative;   
         }
+
+        #olho {
+      position: absolute;
+    top: 20px;
+    right: 60px;
+    cursor: pointer;
+}
         #col4{
         text-align: center;
         min-width: 120px;	
@@ -609,7 +616,8 @@ main{
                 <h1>Login</h1>
                 <input id="email" type="email" placeholder="example@gmail.com">
                 <div class="password-container">
-                    <input type="password" id="field-password" class="field-password" placeholder="*********">
+                    <input type="password" id="field-password" class="field-password" placeholder="*********" >
+                    <i class="fa fa-fw fa-eye " id="olho"></i>
 
             </section>
             <button type="submit" id="btn-login">Entrar</button>
@@ -651,6 +659,20 @@ main{
     </footer>
 
     <script src="./node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        const olho = document.querySelector('#olho');
+        const pass = document.querySelector('#field-password');
+       
+        olho.addEventListener('click', function (e) {
+          // toggle the type attribute
+          const type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
+          pass.setAttribute('type', type);
+          // toggle the eye slash icon
+          this.classList.toggle('fa-eye-slash');
+      
+      });
+        </script> 
     <script>
         window.onload = () => {
             const form = document.getElementById('formLogin');
