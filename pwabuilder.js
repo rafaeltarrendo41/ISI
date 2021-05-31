@@ -1,5 +1,5 @@
 const staticAssets = [
-    './'
+    './login'
   ];
   
   self.addEventListener('install', async event => {
